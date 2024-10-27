@@ -1,0 +1,49 @@
+@use './scaffold';
+@use './non-main-header.sass';
+
+#posts {
+  margin-top: 48px;
+
+  .post-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      margin: 0;
+      padding: 24px;
+    }
+
+    li:hover {
+      background: rgba(255, 255, 255, 0.01);
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .publish-date {
+      display: block;
+      margin-bottom: 0.4em;
+    }
+
+    .title {
+      display: block;
+
+      color: WHITE;
+      font-size: 24px;
+    }
+
+    .description {
+      display: block;
+      margin-top: 0.5em;
+
+      color: #CCCCCC;
+      font-size: 18px;
+    }
+
+    .permalink {
+      color: rgba(255, 255, 255, 0.2);
+    }
+  }
+}

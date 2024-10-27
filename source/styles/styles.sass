@@ -20,14 +20,37 @@ main {
   li {
     margin-bottom: 1em;
   }
+
+  li > ul {
+    margin-top: 1em;
+  }
 }
 
 h1, h2, h3, h4, h5, h6, h7 {
   margin-top: 3em;
+  line-height: 1.1em;
+}
+
+h1 {
+  padding-bottom: 24px;
+
+  font-size: 34px;
+
+  text-align: center;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 a, a:visited {
   color: #D85FA0;
+}
+
+.side-note {
+  padding: 24px;
+
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 pre {

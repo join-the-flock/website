@@ -1,6 +1,4 @@
-body {
-  padding-bottom: 128px;
-}
+@use './scaffold';
 
 header {
   width: 100%;
@@ -12,6 +10,8 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 
   #logo {
     margin-bottom: 16px;
@@ -46,36 +46,4 @@ header {
   font-weight: 200;
   letter-spacing: 2px;
   line-height: 1.4em;
-}
-
-h1 {
-  padding-bottom: 24px;
-
-  font-size: 34px;
-
-  text-align: center;
-
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.side-note {
-  padding: 24px;
-
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.post-list {
-  .title {
-    margin-bottom: 0.5em;
-
-    font-size: 24px;
-  }
-
-  .description {
-    margin-top: 0.5em;
-
-    font-size: 18px;
-  }
 }

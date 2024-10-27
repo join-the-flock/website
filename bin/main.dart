@@ -22,11 +22,11 @@ Future<void> main(List<String> arguments) async {
       site: RssSiteConfiguration(
         title: "Flutter Foundation",
         description: "By the Flutter community, for the Flutter community.",
-        homePageUrl: "",
+        homePageUrl: "https://flutterfoundation.dev/blog/",
       ),
       pageToRssItemMapper: (RssSiteConfiguration config, Page page) {
         return defaultPageToRssItemMapper(config, page)?.copyWith(
-          author: page.data["author"],
+          author: page.data["author"]?["name"] ?? "",
         );
       },
     ));

@@ -1,3 +1,7 @@
+<!--
+title: Blog | Flock
+description: Blog for the Flock fork of Flutter.
+-->
 <!doctype html>
 
 <html lang="en" data-bs-theme="light">
@@ -30,7 +34,7 @@
   <meta name="twitter:image" content="https://flutterfoundation.dev/images/flock_social-media.png" />
 
   <link href="/styles/styles.css" rel="stylesheet">
-  <link href="/styles/post.css" rel="stylesheet">
+  <link href="/styles/blog-directory.css" rel="stylesheet">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -46,13 +50,31 @@
 </header>
 
 <main>
-  <h1>{{ title }}</h1>
-  <div class="author">
-    <img src="{{ author.avatarUrl }}" class="avatar">
-    <div><span class="name">{{ author.name }}</span> • {{ publishDate | formatDateTime(to = "MMMM dd, yyyy") }}</div>
-  </div>
-
-  {{ content }}
+  <h1>BLOG</h1>
+  <p>The latest news about Flock and Nest.</p>
+  <section id="posts">
+    <ol class="post-list">
+      {% for page in pages.byTag("post", sortBy="publishDate=desc") %}
+      <a href="{{ page.data['url'] }}">
+        <li>
+          <div class="post-synopsis">
+            <div class="content">
+              {% if page.data['publishDate'] is defined %}
+              <span class="publish-date above">{{ page.data['publishDate'] | formatDateTime(to = "MMMM dd, yyyy") }}</span>
+              {% endif %}
+              <span class="title">{{ page.data['title'] }}</span>
+              <p class="description">{{ page.data['description'] }}</p>
+              <p>
+                <span class="permalink">{{ page.data['url'] }}</span>
+              </p>
+            </div>
+          </div>
+        </li>
+      </a>
+      <div class="divider">&nbsp;</div>
+      {% endfor %}
+    </ol>
+  </section>
 </main>
 </body>
 </html>
