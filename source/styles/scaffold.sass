@@ -1,6 +1,4 @@
-body {
-  padding-bottom: 128px;
-}
+body {}
 
 header {
   nav {
@@ -39,4 +37,53 @@ header {
   width: 100%;
   padding-top: 196px;
   padding-bottom: 196px;
+}
+
+footer {
+  padding-top: 48px;
+  padding-bottom: 96px;
+
+  background: rgba(0, 0, 0, 0.1);
+
+  .content {
+    max-width: 1000px;
+    margin: auto;
+  }
+
+  .team-list-row {
+    display: flex;
+    display-direction: row;
+    justify-content: center;
+  }
+
+  .team-list {
+    margin: 0;
+    padding: 0;
+
+    list-style-type: none;
+
+    li {
+      margin-bottom: 1em;
+
+      a {
+        text-decoration: none;
+      }
+
+      .avatar {
+        width: 32px;
+        height: 32px;
+        margin-right: 8px;
+
+        border-radius: 16px;
+
+        vertical-align: middle;
+      }
+    }
+  }
+
+  .static-shock-upsell {
+    margin-top: 48px;
+
+    text-align: center;
+  }
 }
