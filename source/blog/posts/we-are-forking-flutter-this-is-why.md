@@ -170,7 +170,7 @@ As we work through the mirroring process, it would be a big help if you would tr
 your apps with Flock. You shouldn't see any difference between Flock and Flutter, and you
 can configure Flock with a tiny Flutter Version Manager (FVM) configuration.
 
-Check our instructions to [get started](https://flutterfoundation.dev).
+Check our instructions to [get started](https://getflocked.dev).
 
 ### Become a reviewer
 Flock needs to recruit dozens of reviewers. Reviewers are responsible for enforcing a
