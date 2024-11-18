@@ -1,8 +1,8 @@
 layout: layouts/guide.jinja
 
 flock_menu:
-  - title: Getting Started
-    id: getting-started
+  - title: Get Started
+    id: get-started
   - title: Mission
     id: mission
   - title: File an Issue

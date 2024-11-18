@@ -30,7 +30,7 @@
   <meta name="twitter:image" content="https://getflocked.dev/images/flock_social-media.png" />
 
   <link href="/styles/styles.css" rel="stylesheet">
-  <link href="/styles/post.css" rel="stylesheet">
+  <link href="/styles/guide.css" rel="stylesheet">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,7 +47,21 @@
 
 <main>
 
-  {{ content }}
+  <div style="display: flex; flex-direction: row">
+    <div style="width: 200px; height: 400px; margin-right: 48px;">
+      <nav id="sideMenu">
+        {% for menuItem in flock_menu %}
+        <a class="button" href="/flock/{{ menuItem.id }}" role="button">{{ menuItem.title }}</a>
+        {% endfor %}
+      </nav>
+    </div>
+
+    <div style="flex: 1">
+    {{ content }}
+    </div>
+
+    <div style="width: 200px; height: 400px; margin-left: 48px;">&nbsp;</div>
+  </div>
 
 </main>
 

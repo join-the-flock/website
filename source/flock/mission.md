@@ -29,10 +29,12 @@ Flock, a fork of Flutter, facilitates option #2 - "use someone else's fork of Fl
 recruits great Flutter developers from the community to implement high-value blocking bug fixes
 and features that the Flutter team can't, or won't implement.
 
-A related project, called Nest, facilitate option #3 - "fork Flutter themselves".
+A related project, called Nest, facilitates option #3 - "fork Flutter themselves".
 
 To take advantage of Flock's bug fixes and features, please see the [Get Started](/flock/get-started)
 guide.
 
 To file a bug for Flock to fix, or a feature for Flock to implement, please see the [File an Issue](/flock/file-an-issue)
 guide.
+
+To efficiently fork Flutter, yourself, please see the tools available in [Nest](/nest)

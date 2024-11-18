@@ -45,4 +45,6 @@ Nobody is paid to work on Flock. We pull labor from charitable and dedicated mem
 community. Please set your expectations accordingly. Stay tuned to the issue ticket for updates.
 
 ## Escape hatch
-TODO: Forward the reader to Nest guides and tools when they're available.
+It's possible that even the Flock team is unable to deliver on your needs in a timely manner. In
+that case, [Nest](/nest) provides tools to make it easier for you to fork Flutter, yourself. With 
+your own fork, you can solve your specific issue, on your schedule.
