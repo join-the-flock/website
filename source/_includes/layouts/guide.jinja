@@ -39,7 +39,9 @@
 <header>
   {{ components.navBar() }}
 
-  <img id="logo" src="/images/flock-logo.png" width="96px">
+  <a href="/" id="logo">
+    <img src="/images/flock-logo.png" width="96px">
+  </a>
   <img id="divider" src="/images/header-hr.png">
 </header>
 
@@ -49,12 +51,14 @@
     <div style="width: 200px; height: 400px; margin-right: 48px;">
       <nav id="sideMenu">
         {% for menuItem in flock_menu %}
-        <a class="button" href="/flock/{{ menuItem.id }}" role="button">{{ menuItem.title }}</a>
+        {% set menuItemUrlPath = "/flock/" + menuItem.id %}
+        <a class="button {{ 'active' if isCurrentPage(menuItemUrlPath) else '' }}" href="{{ menuItemUrlPath }}" role="button">{{ menuItem.title }}</a>
         {% endfor %}
       </nav>
     </div>
 
-    <div style="flex: 1">
+    <div style="flex: 1; min-width: 0;">
+    <!-- ^ "min-width: 0" - a hack to get <pre> tags to respect width in a flex row: https://stackoverflow.com/questions/32035406/how-to-limit-pre-tag-width-inside-flex-container -->
     {{ content }}
     </div>
 

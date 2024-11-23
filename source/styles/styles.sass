@@ -63,6 +63,9 @@ ul, ol {
 }
 
 pre {
+  min-width: 0;
+  // ^ a hack to get <pre> tags to respect width in a flex row: https://stackoverflow.com/questions/32035406/how-to-limit-pre-tag-width-inside-flex-container -->
+
   padding: 24px;
 
   background: rgba(0, 0, 0, 0.1);

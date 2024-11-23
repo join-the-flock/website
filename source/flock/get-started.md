@@ -33,7 +33,7 @@ Configure `.fvmrc` to use Flock:
 
     {
       "flutter": "master",
-      "flutterUrl": "https://github.com/Flutter-Foundation/flutter.git"
+      "flutterUrl": "https://github.com/join-the-flock/flock.git"
     }
 
 ## Install Flock
@@ -49,7 +49,7 @@ Select "yes" to install the Flock version of Flutter to your FVM cache.
 To verify that your Flock installation worked, run `fvm flutter --version`. Ensure
   that your Flutter git URL points to `https://github.com/Flutter-Foundation/flutter.git`.
 
-    Flutter 3.27.0-1.0.pre.200 • channel master • https://github.com/Flutter-Foundation/flutter.git
+    Flutter 3.27.0-1.0.pre.200 • channel master • https://github.com/join-the-flock/flock.git
     Framework • revision 452ef96537 (16 hours ago) • 2024-10-22 12:37:14 +0000
     Engine • revision e6856502b5
     Tools • Dart 3.7.0 (build 3.7.0-47.0.dev) • DevTools 2.40.1</code></pre>
@@ -65,6 +65,6 @@ You're now setup to use Flock! Run all of your usual Flutter commands through FV
     
     fvm flutter build
 
-    # etc.
+    etc.
 
 Within your project, FVM commands will be sent to the Flock version of Flutter.
