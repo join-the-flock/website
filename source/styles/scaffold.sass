@@ -1,4 +1,9 @@
-body {}
+$smallMax: 800px;
+$mediumMax: 1200px;
+
+body {
+  position: relative;
+}
 
 header {
   nav {
@@ -7,10 +12,21 @@ header {
     top: 0;
     width: 100%;
 
+    display: flex;
+    align-items: center;
+
     background: #252128;
 
+    .leading {
+      margin-left: 24px;
+
+      @media (min-width: $smallMax) {
+        display: none;
+      }
+    }
+
     ul {
-      width: 100%;
+      flex: 1;
       margin: 0;
       padding: 0;
       padding-top: 16px;
