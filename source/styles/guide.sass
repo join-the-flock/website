@@ -1,8 +1,41 @@
-@use './scaffold';
-@use './non-main-header.sass';
+@use 'scaffold' as scaffold;
+@use 'non-main-header';
 
 main {
-  max-width: 1200px;
+  max-width: scaffold.$mediumMax;
+}
+
+#contentColumns {
+  display: flex;
+  flex-direction: row;
+}
+
+#sideMenuColumn {
+  display: none;
+
+  width: 200px;
+  margin-right: 48px;
+
+  @media (min-width: scaffold.$smallMax) {
+    display: block;
+  }
+}
+
+#contentColumn {
+  flex: 1;
+  min-width: 0;
+}
+
+#rightSpacerColumn {
+  display: none;
+
+  width: 200px;
+  height: 1px;
+  margin-left: 48px;
+
+  @media (min-width: scaffold.$mediumMax) {
+    display: block;
+  }
 }
 
 #sideMenu {
@@ -36,6 +69,88 @@ main {
     &.active, &.active:hover {
       color: WHITE;
       background: rgba(216, 95, 160, 0.7);
+    }
+  }
+}
+
+#phoneMenuDrawer {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+
+  pointer-events: none;
+
+  z-index: 9999;
+
+  #scrim {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    opacity: 0;
+    transition: opacity 1s;
+
+    background: rgba(0, 0, 0, 0.6);
+  }
+
+  #drawer {
+    position: absolute;
+    width: 80%;
+    max-width: 300px;
+    height: 100%;
+
+    left: -100%;
+    transition: left 0.75s;
+
+    background: #222222;
+
+    overflow-y: scroll;
+
+    #toolbar {
+      width: 100%;
+
+      text-align: right;
+
+      i {
+        padding: 24px;
+        padding-bottom: 12px;
+      }
+    }
+
+    #drawerMenu {
+      padding: 24px;
+
+      .button {
+        margin-bottom: 8px;
+
+        display: block;
+
+        border-radius: 4px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.05);
+
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 16px;
+        text-decoration: none;
+
+        &:hover {
+          border: 1px solid rgba(216, 95, 160, 0.7);
+          background: rgba(216, 95, 160, 0.4);
+
+          color: white;
+        }
+
+        &.active, &.active:hover {
+          color: WHITE;
+          background: rgba(216, 95, 160, 0.7);
+        }
+      }
     }
   }
 }

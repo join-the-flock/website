@@ -33,6 +33,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Fira+Mono:wght@400;500;700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -47,8 +49,8 @@
 
 <main>
 
-  <div style="display: flex; flex-direction: row">
-    <div style="width: 200px; height: 400px; margin-right: 48px;">
+  <div id="contentColumns">
+    <div id="sideMenuColumn">
       <nav id="sideMenu">
         {% for menuItem in flock_menu %}
         {% set menuItemUrlPath = "/flock/" + menuItem.id %}
@@ -57,16 +59,65 @@
       </nav>
     </div>
 
-    <div style="flex: 1; min-width: 0;">
+    <div id="contentColumn">
     <!-- ^ "min-width: 0" - a hack to get <pre> tags to respect width in a flex row: https://stackoverflow.com/questions/32035406/how-to-limit-pre-tag-width-inside-flex-container -->
     {{ content }}
     </div>
 
-    <div style="width: 200px; height: 400px; margin-left: 48px;">&nbsp;</div>
+    <div id="rightSpacerColumn">&nbsp;</div>
   </div>
 
 </main>
 
 {{ components.footer() }}
+
+<!-- Fullscreen drawer menu that's used on phones when we have no side menu -->
+<div id="phoneMenuDrawer">
+  <div id="scrim">&nbsp;</div>
+
+  <div id="drawer">
+    <div id="toolbar">
+      <i id="drawerExitButton" class="fa-solid fa-xmark"></i>
+    </div>
+
+    <nav id="drawerMenu">
+      {% for menuItem in flock_menu %}
+      {% set menuItemUrlPath = "/flock/" + menuItem.id %}
+      <a class="button {{ 'active' if isCurrentPage(menuItemUrlPath) else '' }}" href="{{ menuItemUrlPath }}" role="button">{{ menuItem.title }}</a>
+      {% endfor %}
+    </nav>
+  </div>
+</div>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+
+const phoneMenuDrawer = document.getElementById("phoneMenuDrawer");
+const scrim = document.getElementById("scrim");
+const drawer = document.getElementById("drawer");
+const drawerExitButton = document.getElementById("drawerExitButton");
+
+// Open drawer on menu button click.
+menuButton.addEventListener(
+  "click",
+  (ev) => {
+    phoneMenuDrawer.style.pointerEvents = "auto";
+    scrim.style.opacity = 1;
+    drawer.style.left = 0;
+  },
+  false,
+);
+
+// Close drawer on exit button click.
+drawerExitButton.addEventListener(
+  "click",
+  (ev) => {
+    phoneMenuDrawer.style.pointerEvents = "none";
+    scrim.style.opacity = 0;
+    drawer.style.left = "-100%";
+  },
+  false,
+);
+</script>
 </body>
 </html>
