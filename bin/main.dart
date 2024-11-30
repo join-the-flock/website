@@ -19,10 +19,11 @@ Future<void> main(List<String> arguments) async {
       showDrafts: arguments.contains("preview"),
     ))
     ..plugin(RssPlugin(
+      includePagesByDefault: false,
       site: RssSiteConfiguration(
         title: "Flutter Foundation",
         description: "By the Flutter community, for the Flutter community.",
-        homePageUrl: "https://getflocked.dev/blog/",
+        homePageUrl: "https://getflocked.dev",
       ),
       pageToRssItemMapper: (RssSiteConfiguration config, Page page) {
         return defaultPageToRssItemMapper(config, page)?.copyWith(
