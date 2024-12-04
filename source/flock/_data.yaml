@@ -1,13 +1,23 @@
 layout: layouts/guide.jinja
 
-side_menu:
-  base_path: /flock
-  items:
-    - title: Get Started
-      id: get-started
-    - title: Mission
-      id: mission
-    - title: File an Issue
-      id: file-an-issue
-    - title: Contribute a Change
-      id: contribute-a-change
+flock_menu:
+  - title: Get Started
+    id: get-started
+  - title: Mission
+    id: mission
+  - title: File an Issue
+    id: file-an-issue
+  - title: Contribute a Change
+    id: contribute-a-change
+
+#side_menu:
+#  base_path: /flock
+#  items:
+#    - title: Get Started
+#      id: get-started
+#    - title: Mission
+#      id: mission
+#    - title: File an Issue
+#      id: file-an-issue
+#    - title: Contribute a Change
+#      id: contribute-a-change
