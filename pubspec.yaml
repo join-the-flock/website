@@ -9,9 +9,9 @@ environment:
 dependencies:
   static_shock: ^0.0.13
 
-dependency_overrides:
-  static_shock:
-    path: /Users/matt/Projects/static_shock/packages/static_shock
+#dependency_overrides:
+#  static_shock:
+#    path: /Users/matt/Projects/static_shock/packages/static_shock
 
 dev_dependencies:
   lints: ^2.0.0
