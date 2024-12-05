@@ -20,7 +20,7 @@ Future<void> main(List<String> arguments) async {
     ))
     ..plugin(RssPlugin(
       site: RssSiteConfiguration(
-        title: "Flutter Foundation",
+        title: "Flock and Nest",
         description: "By the Flutter community, for the Flutter community.",
         homePageUrl: "https://getflocked.dev/blog/",
       ),

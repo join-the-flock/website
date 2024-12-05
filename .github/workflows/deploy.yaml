@@ -1,4 +1,4 @@
-name: Build and deploy Flutter Foundation website
+name: Build and deploy the Flock website
 on:
   push:
     branches:

@@ -16,7 +16,7 @@ unwilling to address your issue should you file a ticket with Flock.
 Locate the existing Flutter ticket that you think the Flock team should handle. You'll need that
 when filing an issue ticket for Flock.
 
-Open a new ticket in the [Nest repository](https://github.com/Flutter-Foundation/nest/issues/new/choose).
+Open a new ticket in the [Nest repository](https://github.com/join-the-flock/nest/issues/new/choose).
 
 The Nest repository is used both for Flock tickets, and Nest tickets.
 

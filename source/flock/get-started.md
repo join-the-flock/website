@@ -12,7 +12,7 @@ Configure your Flutter project to use Flock.
 <p class="side-note">For now, Flock is just a direct copy of Flutter. We're working on smoothing out the
   synchronization process on GitHub. We encourage you to start using Flock, which should
   exactly match Flutter's current <code>master</code> branch. If you run into any difficulties,
-  please <a href="https://github.com/Flutter-Foundation/nest" target="_blank">file an issue with us</a> so we can fix it!</p>
+  please <a href="https://github.com/join-the-flock/nest" target="_blank">file an issue with us</a> so we can fix it!</p>
 
 ## Install FVM
 Flutter Version Manager (FVM) let's you install and use multiple versions of Flutter on the same 
@@ -47,7 +47,7 @@ Select "yes" to install the Flock version of Flutter to your FVM cache.
 
 ## Verify Flock Installation
 To verify that your Flock installation worked, run `fvm flutter --version`. Ensure
-  that your Flutter git URL points to `https://github.com/Flutter-Foundation/flutter.git`.
+  that your Flutter git URL points to `https://github.com/join-the-flock/flutter.git`.
 
     Flutter 3.27.0-1.0.pre.200 • channel master • https://github.com/join-the-flock/flock.git
     Framework • revision 452ef96537 (16 hours ago) • 2024-10-22 12:37:14 +0000

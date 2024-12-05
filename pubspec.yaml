@@ -1,5 +1,5 @@
-name: flutter_foundation_website
-description: Marketing website for the Flutter Foundation
+name: flock_website
+description: Marketing website for the Flock and Nest
 version: 1.0.0
 publish_to: none
 
@@ -8,6 +8,10 @@ environment:
 
 dependencies:
   static_shock: ^0.0.13
+
+dependency_overrides:
+  static_shock:
+    path: /Users/matt/Projects/static_shock/packages/static_shock
 
 dev_dependencies:
   lints: ^2.0.0
