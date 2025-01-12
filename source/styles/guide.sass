@@ -38,8 +38,19 @@ main {
   }
 }
 
-#sideMenu {
-  margin-top: 172px;
+#sideMenu, #drawerMenu {
+  .nav-group {
+    margin-top: 32px;
+
+    .title {
+      margin-bottom: 0;
+
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+  }
 
   .button {
     margin-bottom: 8px;
@@ -71,6 +82,10 @@ main {
       background: rgba(216, 95, 160, 0.7);
     }
   }
+}
+
+#sideMenu {
+  margin-top: 172px;
 }
 
 #phoneMenuDrawer {

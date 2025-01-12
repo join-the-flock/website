@@ -1,0 +1,26 @@
+{#
+  Inputs:
+  - base_path: A URL prefix to apply to all menu item paths.
+  - menu_group: The group of menu items to display.
+  - isCurrentPage: A function that determines if a given menu item's URL
+                   points to the current page: `bool isCurrentPage(String urlPath)`
+
+  Example of a menu group:
+
+  - title: Leads
+    id: leads
+    items:
+      - title: Overview
+        id: overview
+      - title: Communication
+        id: communication
+#}
+
+<div class="nav-group">
+  <p class="title">{{ menu_group.title }}</p>
+
+  {% for item in menu_group.items %}
+    {% set menuItemUrlPath = base_path + "/" + item.id %}
+    <a class="button {{ 'active' if isCurrentPage(menuItemUrlPath) else '' }}" href="{{ menuItemUrlPath }}" role="button">{{ item.title }}</a>
+  {% endfor %}
+</div>

@@ -1,0 +1,23 @@
+{#
+  Inputs:
+  - side_menu: The menu structure.
+  - isCurrentPage: A function that determines if a given menu item's URL
+                   points to the current page: `bool isCurrentPage(String urlPath)`
+#}
+
+{% for menuItem in side_menu.items %}
+  {% if menuItem.items %}
+    {# Show a menu sub-group with a header and child items #}
+    {{
+       components.sideMenuGroup({
+         "base_path": side_menu.base_path + "/" + menuItem.id,
+         "menu_group": menuItem,
+         "isCurrentPage": isCurrentPage,
+       })
+    }}
+  {% else %}
+    {# Show an individual menu item #}
+    {% set menuItemUrlPath = side_menu.base_path + "/" + menuItem.id %}
+    <a class="button {{ 'active' if isCurrentPage(menuItemUrlPath) else '' }}" href="{{ menuItemUrlPath }}" role="button">{{ menuItem.title }}</a>
+  {% endif %}
+{% endfor %}

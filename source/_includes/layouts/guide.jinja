@@ -52,10 +52,9 @@
   <div id="contentColumns">
     <div id="sideMenuColumn">
       <nav id="sideMenu">
-        {% for menuItem in flock_menu %}
-        {% set menuItemUrlPath = "/flock/" + menuItem.id %}
-        <a class="button {{ 'active' if isCurrentPage(menuItemUrlPath) else '' }}" href="{{ menuItemUrlPath }}" role="button">{{ menuItem.title }}</a>
-        {% endfor %}
+
+        {{ components.sideMenu({"side_menu": side_menu, "isCurrentPage": isCurrentPage}) }}
+
       </nav>
     </div>
 
@@ -81,10 +80,9 @@
     </div>
 
     <nav id="drawerMenu">
-      {% for menuItem in flock_menu %}
-      {% set menuItemUrlPath = "/flock/" + menuItem.id %}
-      <a class="button {{ 'active' if isCurrentPage(menuItemUrlPath) else '' }}" href="{{ menuItemUrlPath }}" role="button">{{ menuItem.title }}</a>
-      {% endfor %}
+
+      {{ components.sideMenu({"side_menu": side_menu, "isCurrentPage": isCurrentPage}) }}
+
     </nav>
   </div>
 </div>
