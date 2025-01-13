@@ -7,7 +7,7 @@ environment:
   sdk: ^3.0.0
 
 dependencies:
-  static_shock: ^0.0.13
+  static_shock: ^0.0.14
 
 #dependency_overrides:
 #  static_shock:
