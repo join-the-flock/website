@@ -62,4 +62,4 @@ Once this command completes, your `nest/flock/` directory contains the latest ve
 of Flock, and it's ready for development.
 
 ## Submit your changes
-When you're ready to submit your changes to Flock, follow the steps in [contribute a change](contribute-a-change).
+When you're ready to submit your changes to Flock, follow the steps in [contribute a change](/flock/contribute/contribute-a-change).

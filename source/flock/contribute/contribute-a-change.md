@@ -5,7 +5,7 @@ title: Contribute a Change
 Thanks for your interest in contributing to Flock. Every change to Flock is contributed through 
 something called a "patch file". This guide shows you how to contribute patch files for review.
 
-If you're just getting started with Flock, see the [setup guide](setup-to-contribute.md) to
+If you're just getting started with Flock, see the [setup guide](/flock/contribute/setup-to-contribute) to
 begin contributing.
 
 ## Create a commit for your changes
