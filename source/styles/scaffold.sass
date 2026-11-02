@@ -6,49 +6,6 @@ body {
 }
 
 header {
-  nav {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-
-    display: flex;
-    align-items: center;
-
-    background: #252128;
-
-    .leading {
-      margin-left: 24px;
-
-      @media (min-width: $smallMax) {
-        display: none;
-      }
-    }
-
-    ul {
-      flex: 1;
-      margin: 0;
-      padding: 0;
-      padding-top: 16px;
-      padding-bottom: 16px;
-      padding-right: 24px;
-      display: flex;
-      flex-direction: row;
-      justify-content: end;
-
-      list-style-type: none;
-
-      li {
-        margin-right: 24px;
-        display: inline;
-
-        a {
-          text-transform: uppercase;
-          text-decoration: none;
-        }
-      }
-    }
-  }
 
   width: 100%;
   padding-top: 196px;
@@ -72,8 +29,7 @@ header {
 }
 
 footer {
-  padding-top: 48px;
-  padding-bottom: 96px;
+  padding: 32px 24px;
 
   background: rgba(0, 0, 0, 0.1);
 
@@ -97,6 +53,10 @@ footer {
     li {
       margin-bottom: 1em;
 
+      &:last-child {
+        margin-bottom: 0;
+      }
+
       a {
         text-decoration: none;
       }
@@ -113,9 +73,4 @@ footer {
     }
   }
 
-  .static-shock-upsell {
-    margin-top: 48px;
-
-    text-align: center;
-  }
 }

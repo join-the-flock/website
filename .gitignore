@@ -1,5 +1,6 @@
 # Build output
 /build
+/source/data/recent-commits.json
 
 # https://dart.dev/guides/libraries/private-files
 # Created by `dart pub`

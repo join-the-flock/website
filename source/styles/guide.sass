@@ -1,5 +1,6 @@
 @use 'scaffold' as scaffold;
 @use 'non-main-header';
+@use 'theme';
 
 main {
   max-width: scaffold.$mediumMax;
@@ -58,28 +59,29 @@ main {
     display: block;
 
     border-radius: 4px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    background: var(--elevated);
 
     padding-left: 16px;
     padding-right: 16px;
     padding-top: 4px;
     padding-bottom: 4px;
 
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--text-muted);
     font-size: 16px;
     text-decoration: none;
 
     &:hover {
-      border: 1px solid rgba(216, 95, 160, 0.7);
-      background: rgba(216, 95, 160, 0.4);
+      border: 1px solid var(--accent-pink);
+      background: #39203e;
 
-      color: white;
+      color: var(--text-primary);
     }
 
     &.active, &.active:hover {
-      color: WHITE;
-      background: rgba(216, 95, 160, 0.7);
+      color: var(--text-primary);
+      background: linear-gradient(120deg, #f8217e2e, #b12cd02e);
+      border-color: var(--accent-pink);
     }
   }
 }
@@ -118,7 +120,8 @@ main {
     left: -100%;
     transition: left 0.75s;
 
-    background: #222222;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
 
     overflow-y: scroll;
 
@@ -142,30 +145,45 @@ main {
         display: block;
 
         border-radius: 4px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--border);
+        background: var(--elevated);
 
         padding-left: 16px;
         padding-right: 16px;
         padding-top: 4px;
         padding-bottom: 4px;
 
-        color: rgba(255, 255, 255, 0.7);
+        color: var(--text-muted);
         font-size: 16px;
         text-decoration: none;
 
         &:hover {
-          border: 1px solid rgba(216, 95, 160, 0.7);
-          background: rgba(216, 95, 160, 0.4);
+          border: 1px solid var(--accent-pink);
+          background: #39203e;
 
-          color: white;
+          color: var(--text-primary);
         }
 
         &.active, &.active:hover {
-          color: WHITE;
-          background: rgba(216, 95, 160, 0.7);
+          color: var(--text-primary);
+          background: linear-gradient(120deg, #f8217e2e, #b12cd02e);
+          border-color: var(--accent-pink);
         }
       }
     }
+  }
+}
+
+body.guide-page {
+  main { box-sizing: border-box; width: 100%; padding: 40px 40px 88px; }
+  #contentColumn { line-height: 1.8; }
+  #contentColumn h1 { margin-top: 28px; }
+  .page-intro { margin: 40px 0; font-size: 24px; font-weight: 400; line-height: 1.65; letter-spacing: normal; }
+  #sideMenu .nav-group .title, #drawerMenu .nav-group .title { color: var(--accent-light); }
+  #sideMenu a:focus-visible, #drawerMenu a:focus-visible { outline: 2px solid var(--accent-cyan); outline-offset: 3px; }
+  @media(max-width:799px) {
+    main { padding: 24px 24px 64px; }
+    .page-intro { font-size: 21px; }
+    #contentColumn h1 { font-size: 32px; }
   }
 }

@@ -1,5 +1,20 @@
 @use './scaffold';
 @use './non-main-header.sass';
+@use './theme';
+
+body.blog-page {
+  main { box-sizing: border-box; width: 100%; max-width: 960px; padding: 40px 40px 88px; }
+  main > h1 { margin-top: 28px; }
+  #posts .post-list li { border-radius: 12px; border: 1px solid var(--border); background: var(--canvas); }
+  #posts .post-list li:hover { background: var(--elevated); border-color: #713254; }
+  #posts .publish-date { color: var(--text-muted); font-size: 14px; }
+  #posts .permalink { overflow-wrap: anywhere; font-size: 14px; }
+  #posts .post-list p:last-child { margin-bottom: 0; }
+  @media(max-width:600px) {
+    main { padding: 24px 24px 64px; }
+    #posts .post-list li { padding: 20px; }
+  }
+}
 
 #posts {
   margin-top: 48px;
@@ -15,7 +30,7 @@
     }
 
     li:hover {
-      background: rgba(255, 255, 255, 0.01);
+      background: var(--elevated);
     }
 
     a {
@@ -30,7 +45,7 @@
     .title {
       display: block;
 
-      color: WHITE;
+      color: var(--text-primary);
       font-size: 24px;
     }
 
@@ -38,12 +53,12 @@
       display: block;
       margin-top: 0.5em;
 
-      color: #CCCCCC;
+      color: var(--text-muted);
       font-size: 18px;
     }
 
     .permalink {
-      color: rgba(255, 255, 255, 0.2);
+      color: var(--accent-light);
     }
   }
 }

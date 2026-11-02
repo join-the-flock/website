@@ -1,0 +1,74 @@
+<div class="home-features">
+  <section class="feature-overview" id="what-is-it" aria-labelledby="overview-title">
+    <div class="feature-intro">
+      <h1 id="overview-title">Flock is <span>Flutter++</span></h1>
+      <p>Flock is a fork of Flutter. Flock stays up to date with Flutter, adds new features, and fixes bugs on top.</p>
+    </div>
+    <div class="activity-artwork">
+      <img src="/images/features/activity-ribbon-v4-optimized.webp" width="920" height="1039" alt="A flowing strip of blue Flutter squares curves through depth toward the viewer, with pink Flock additions and pink X marks over fixed bugs." loading="lazy" decoding="async">
+    </div>
+  </section>
+
+  <section class="feature-row" id="get-started" aria-labelledby="switch-title">
+    <div class="feature-visual switch-visual">
+      <div class="config-window">
+        <div class="config-toolbar"><span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span><span>.fvmrc</span></div>
+        <pre class="config-code" aria-live="polite"><code>{
+  <span class="code-key">"flutter"</span>: <span class="code-value">"master"</span>,
+  <span class="config-flock-line"><span class="code-key">"flutterUrl"</span>:
+    <span class="code-value">"https://github.com/join-the-flock/flock.git"</span></span>
+}</code></pre>
+        <div class="config-footer">
+        <div class="sdk-picker" role="group" aria-label="Preview FVM configuration">
+          <button type="button" data-sdk="flutter" aria-pressed="false">Flutter</button>
+          <button type="button" data-sdk="flock" aria-pressed="true">Flock<span>++</span></button>
+        </div>
+        </div>
+      </div>
+    </div>
+    <div class="feature-copy">
+      <h2 id="switch-title">Easy to Switch</h2>
+      <p>Move from Flutter, to Flock, and back. All it takes is a change in your Flutter Version Manager (FVM) configuration file.</p>
+      <p>Use Flock until you don't need it anymore, and then switch back to Flutter.</p>
+      <a class="feature-link" href="/flock/get-started">Get Started <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+  <section class="feature-row feature-row-reversed" aria-labelledby="branches-title">
+    <div class="feature-visual branch-visual">
+      <svg class="branch-diagram" viewBox="0 0 700 520" role="img" aria-label="Flowing blue Flutter branches with repeated upward pulls into glowing pink Flock branches">
+        <defs>
+          <linearGradient id="branch-pull-color" x1="0" y1="1" x2="0" y2="0"><stop stop-color="#22d0f2"/><stop offset=".45" stop-color="#b12cd0"/><stop offset="1" stop-color="#ff5ca8"/></linearGradient>
+          <linearGradient id="branch-blue-ribbon" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#22d0f2" stop-opacity="0"/><stop offset=".2" stop-color="#159acb"/><stop offset=".5" stop-color="#51dfff"/><stop offset=".8" stop-color="#22d0f2"/><stop offset="1" stop-color="#22d0f2" stop-opacity="0"/></linearGradient>
+          <linearGradient id="branch-pink-ribbon" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#b12cd0" stop-opacity="0"/><stop offset=".2" stop-color="#b12cd0"/><stop offset=".52" stop-color="#ff70b6"/><stop offset=".8" stop-color="#f8217e"/><stop offset="1" stop-color="#f8217e" stop-opacity="0"/></linearGradient>
+        </defs>
+        {% for offset in [0, 120, 240] %}
+        <g class="branch-pair" transform="translate(0 {{ offset }})" style="--pull-delay: -{{ loop.index0 }}s">
+          <path class="branch-bloom branch-blue" stroke="url(#branch-blue-ribbon)" d="M-100 165 C170 205 450 90 800 105"/>
+          <path class="branch-glow branch-blue" stroke="url(#branch-blue-ribbon)" d="M-100 165 C170 205 450 90 800 105"/>
+          <path class="branch-line branch-blue" stroke="url(#branch-blue-ribbon)" d="M-100 165 C170 205 450 90 800 105"/>
+          <path class="branch-highlight branch-blue" stroke="url(#branch-blue-ribbon)" d="M-100 165 C170 205 450 90 800 105"/>
+          <path class="branch-bloom branch-pink" stroke="url(#branch-pink-ribbon)" d="M-100 87 C170 127 450 12 800 27"/>
+          <path class="branch-glow branch-pink" stroke="url(#branch-pink-ribbon)" d="M-100 87 C170 127 450 12 800 27"/>
+          <path class="branch-line branch-pink" stroke="url(#branch-pink-ribbon)" d="M-100 87 C170 127 450 12 800 27"/>
+          <path class="branch-highlight branch-pink" stroke="url(#branch-pink-ribbon)" d="M-100 87 C170 127 450 12 800 27"/>
+          <path class="branch-pull-haze" d="M80.3 171.9 C128.3 171.9 112.0 87.6 160.0 87.6"/>
+          <path class="branch-pull" stroke="url(#branch-pull-color)" d="M80.3 171.9 C128.3 171.9 112.0 87.6 160.0 87.6"/>
+          <path class="branch-pulse" pathLength="100" d="M80.3 171.9 C128.3 171.9 112.0 87.6 160.0 87.6" style="--connection-delay: -0.0s"/>
+          <path class="branch-pull-haze" d="M276.0 150.8 C324.0 150.8 312.1 60.4 360.1 60.4"/>
+          <path class="branch-pull" stroke="url(#branch-pull-color)" d="M276.0 150.8 C324.0 150.8 312.1 60.4 360.1 60.4"/>
+          <path class="branch-pulse" pathLength="100" d="M276.0 150.8 C324.0 150.8 312.1 60.4 360.1 60.4" style="--connection-delay: -1.3s"/>
+          <path class="branch-pull-haze" d="M483.5 121.2 C531.5 121.2 525.7 33.4 573.7 33.4"/>
+          <path class="branch-pull" stroke="url(#branch-pull-color)" d="M483.5 121.2 C531.5 121.2 525.7 33.4 573.7 33.4"/>
+          <path class="branch-pulse" pathLength="100" d="M483.5 121.2 C531.5 121.2 525.7 33.4 573.7 33.4" style="--connection-delay: -2.6s"/>
+        </g>
+        {% endfor %}
+      </svg>
+    </div>
+    <div class="feature-copy">
+      <h2 id="branches-title">Mirrored Branches</h2>
+      <p>Keep using any Flutter branch. Flock rebases daily on top of Flutter's master, beta, and stable branches.</p>
+      <a class="feature-link" href="/flock/get-started">Get Started <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+</div>

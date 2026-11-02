@@ -4,7 +4,7 @@ description: The Flutter team has a labor shortage. We're forking Flutter so tha
 publishDate: 2024-10-27
 author: 
   name: Matt Carroll
-  avatarUrl: https://secure.gravatar.com/avatar/2b519036dc508c11b0db3463fffbd8ff
+  avatarUrl: /images/team/matt-carroll.jpg
 ---
 Over the years, Flutter has attracted millions of developers who built user interfaces across
 every platform. Flutter began as a UI toolkit for mobile - iOS and Android, only. Then Flutter

@@ -4,7 +4,7 @@ description: I sit down with Vasiliy to chat about Flock.
 publishDate: 2024-11-05
 author: 
   name: Matt Carroll
-  avatarUrl: https://secure.gravatar.com/avatar/2b519036dc508c11b0db3463fffbd8ff
+  avatarUrl: /images/team/matt-carroll.jpg
 ---
 On November 5th, 2024, I sat down with Vasiliy Zukanov to discuss my development history, Flock,
 and Nest.

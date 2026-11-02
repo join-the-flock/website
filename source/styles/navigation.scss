@@ -1,0 +1,43 @@
+.site-header {
+* { box-sizing: border-box; }
+& { position: relative; z-index: 6; width: 100%; padding: 0; display: block; font-family: Inter, Arial, sans-serif; line-height: normal; background: #100b1880; border-bottom: 1px solid #b9a9c51a; backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px); }
+.site-nav { position: static; background: transparent; min-height: 58px; width: min(100% - 80px, 1400px); margin: auto; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+.brand, .brand:visited { display: flex; align-items: center; gap: 9px; flex-shrink: 0; color: #f7f1fa; text-decoration: none; }
+.brand img { width: 33px; height: 36px; object-fit: contain; }
+.brand span { font-size: 22px; font-weight: 650; letter-spacing: -.6px; }
+.brand .brand-tagline { display: flex; align-items: center; gap: 12px; margin-left: 4px; color: #ff8ecb; font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif; font-size: 16px; font-weight: 400; letter-spacing: .09em; white-space: nowrap; }
+.brand .brand-tagline span { color: #ff8ecb; font-family: Arial, sans-serif; font-size: 21px; font-weight: 300; letter-spacing: 0; opacity: .7; }
+.nav-links { --link-space: clamp(9px, 1.25vw, 19px); display: flex; align-items: center; }
+.nav-links a { position: relative; padding: 20px var(--link-space); font-size: 13px; font-weight: 500; color: #c9bfd2; text-decoration: none; white-space: nowrap; transition: color 160ms ease; }
+.nav-links a:visited { color: #c9bfd2; }
+.nav-links a:hover, .nav-links a[aria-current], .nav-links a[aria-current]:visited { color: #f7f1fa; }
+.nav-links a[aria-current]::after { content: ''; position: absolute; height: 2px; left: var(--link-space); right: var(--link-space); bottom: 11px; background: #f8217e; border-radius: 2px; }
+.site-nav a:focus-visible { outline: 2px solid #f8217e; outline-offset: 6px; border-radius: 3px; }
+@media(max-width:760px) {
+  .site-nav { width: calc(100% - 32px); gap: 16px; min-height: 58px; flex-wrap: wrap; justify-content: center; padding: 5px 0 0; }
+  .brand img { width: 28px; height: 31px; }
+  .brand span { font-size: 20px; }
+  .nav-links { --link-space: 6px; width: 100%; justify-content: space-around; overflow-x: auto; }
+  .nav-links a { flex-shrink: 0; padding: 8px var(--link-space) 12px; font-size: 12px; }
+  .nav-links a[aria-current]::after { bottom: 5px; }
+}
+}
+.hero > .site-header { position: absolute; inset: 0 0 auto; }
+
+.site-header .section-menu-button {
+  display: none;
+  appearance: none;
+  border: 1px solid #b9a9c533;
+  border-radius: 5px;
+  background: transparent;
+  color: #f7f1fa;
+  padding: 7px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.site-header .section-menu-button:focus-visible { outline: 2px solid #f8217e; outline-offset: 3px; }
+@media(max-width:799px) { .site-header .section-menu-button { display: block; } }
+@media(max-width:760px) {
+  .site-header .site-nav { position: relative; }
+  .site-header .section-menu-button { position: absolute; left: 0; top: 6px; }
+}

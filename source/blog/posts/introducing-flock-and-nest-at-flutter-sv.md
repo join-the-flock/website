@@ -4,7 +4,7 @@ description: I announced Flock and Nest at Flutter Silicon Valley on October 24t
 publishDate: 2024-10-29
 author: 
   name: Matt Carroll
-  avatarUrl: https://secure.gravatar.com/avatar/2b519036dc508c11b0db3463fffbd8ff
+  avatarUrl: /images/team/matt-carroll.jpg
 ---
 On October 24th, 2024, I introduced Flock and Nest at the Flutter Silicon Valley. This
 Meetup was hosted at Google in Sunnyvale. The audience included about 30 outside developers

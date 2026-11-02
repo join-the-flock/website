@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0D0912">
+<title>Flock — embracing hero study</title>
+<link rel="stylesheet" href="style.css">
+<main class="hero" aria-label="Flock patches built on Flutter commits">
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Main navigation">
+      <a class="brand" href="#flock" aria-label="Flock home">
+        <img src="assets/flock-mark.png" width="46" height="54" alt="">
+        <span>Flock</span>
+        <span class="brand-tagline"><span aria-hidden="true">|</span> Flutter++</span>
+      </a>
+      <div class="nav-links">
+        <a href="#flock" aria-current="page">Flock</a>
+        <a href="#golden-goose">Golden Goose</a>
+        <a href="#plume">Plume</a>
+        <a href="#nest">Nest</a>
+        <a href="#blog">Blog</a>
+        <a href="#about">About</a>
+      </div>
+    </nav>
+  </header>
+  <canvas id="plume" aria-hidden="true"></canvas>
+  <div class="scene">
+    <div class="flock">
+      <img class="fleek" src="assets/fleek-embracing.png" alt="Fleek embracing the Flock patch stack" width="1560" height="1008">
+      <div class="stack">
+        <div class="back back-three"></div><div class="back back-two"></div><div class="back back-one"></div>
+        <article class="commit patch">
+          <h1>Repair patches for current Flutter master</h1>
+          <p><span class="avatar" aria-hidden="true">MC</span><span><strong>matthew-carroll</strong> authored yesterday</span></p>
+        </article>
+      </div>
+    </div>
+    <div class="flutter">
+      <article class="commit"><h2>Roll Skia from 3df52f9ec546 to e43478a2f9f8 (1 revision) (#195761)</h2><p><span class="avatar" aria-hidden="true">↗</span><span><strong>engine-flutter-autoroll</strong> authored 3 hours ago</span></p></article>
+      <article class="commit"><h2>Fix XcodeProjectInterpreter dependency cycle in flutter_tools</h2><p><span class="avatar" aria-hidden="true">K</span><span><strong>kevmoo</strong> authored 2 days ago</span></p></article>
+      <article class="commit"><h2>Adds Vulkan sync validation test run</h2><p><span class="avatar" aria-hidden="true">↗</span><span>Flutter commit</span></p></article>
+    </div>
+  </div>
+  <button id="motion" type="button" aria-pressed="false">Pause animation</button>
+  <button id="new-commit" type="button">Simulate Flock commit</button>
+  <button id="new-flutter" type="button">Simulate Flutter commit</button>
+</main>
+<script src="plume.js"></script>
+<script src="edge-glow.js"></script>
+<script src="flock-commits.js"></script>
+<script src="flutter-commits.js"></script>
+<script src="hero-layout.js"></script>
+</html>

@@ -4,7 +4,7 @@ description: On October 30th, we discussed Flock and Nest on our weekly Flutter 
 publishDate: 2024-10-30
 author: 
   name: Matt Carroll
-  avatarUrl: https://secure.gravatar.com/avatar/2b519036dc508c11b0db3463fffbd8ff
+  avatarUrl: /images/team/matt-carroll.jpg
 ---
 Our announcement of Flock spread quickly around social media. Many people showed interest,
 some expressed concerns, and others spun completely false narratives about Flutter dying.

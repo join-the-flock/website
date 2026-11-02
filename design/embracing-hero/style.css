@@ -1,0 +1,63 @@
+@property --last-card-height { syntax: '<length>'; inherits: true; initial-value: 0px; }
+:root { color-scheme: dark; font-family: Inter, Arial, sans-serif; background: #0d0912; color: #f7f1fa; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+.site-header { position: absolute; inset: 0 0 auto; z-index: 6; background: #100b1880; border-bottom: 1px solid #b9a9c51a; backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px); }
+.site-nav { min-height: 58px; width: min(100% - 80px, 1400px); margin: auto; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+.brand { display: flex; align-items: center; gap: 9px; flex-shrink: 0; color: #f7f1fa; text-decoration: none; }
+.brand img { width: 29px; height: 36px; object-fit: contain; }
+.brand span { font-size: 22px; font-weight: 650; letter-spacing: -.6px; }
+.brand .brand-tagline { display: flex; align-items: center; gap: 12px; margin-left: 4px; color: #ff8ecb; font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif; font-size: 16px; font-weight: 400; letter-spacing: .09em; white-space: nowrap; }
+.brand .brand-tagline span { color: #ff8ecb; font-family: Arial, sans-serif; font-size: 21px; font-weight: 300; letter-spacing: 0; opacity: .7; }
+.nav-links { --link-space: clamp(9px, 1.25vw, 19px); display: flex; align-items: center; }
+.nav-links a { position: relative; padding: 20px var(--link-space); font-size: 13px; font-weight: 500; color: #c9bfd2; text-decoration: none; white-space: nowrap; transition: color 160ms ease; }
+.nav-links a:hover, .nav-links a[aria-current] { color: #f7f1fa; }
+.nav-links a[aria-current]::after { content: ''; position: absolute; height: 2px; left: var(--link-space); right: var(--link-space); bottom: 11px; background: #f8217e; border-radius: 2px; }
+.site-nav a:focus-visible { outline: 2px solid #f8217e; outline-offset: 6px; border-radius: 3px; }
+@media(max-width:760px) {
+  .site-nav { width: calc(100% - 32px); gap: 16px; min-height: 58px; flex-wrap: wrap; justify-content: center; padding: 5px 0 0; }
+  .brand img { width: 25px; height: 31px; }
+  .brand span { font-size: 20px; }
+  .nav-links { --link-space: 6px; width: 100%; justify-content: space-around; overflow-x: auto; }
+  .nav-links a { flex-shrink: 0; padding: 8px var(--link-space) 12px; font-size: 12px; }
+  .nav-links a[aria-current]::after { bottom: 5px; }
+}
+.hero { position: relative; height: 100svh; overflow: hidden; isolation: isolate; background: #0d0912; }
+#plume { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; }
+.edge-glow { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 2; pointer-events: none; }
+.scene { z-index: 1; }
+.scene { position: absolute; width: min(125vw, 950px); container-type: inline-size; left: 50%; bottom: calc(var(--last-card-height, 0px) / -4 * var(--scene-scale, 1)); transform: translateX(-50%) scale(var(--scene-scale, 1)); transform-origin: center bottom; }
+.hero::after { content: ''; position: absolute; z-index: 4; pointer-events: none; inset: auto 0 0; height: calc(var(--last-card-height, 116px) * .55 * var(--scene-scale, 1)); background: linear-gradient(to bottom, #0d091200 0%, #0d09120d 12%, #0d09122e 28%, #0d091266 48%, #0d0912ad 68%, #0d0912e8 86%, #0d0912 100%); }
+.flock { position: relative; padding-top: 46.5%; }
+.fleek { position: absolute; width: 100%; height: auto; top: 0; left: 0; z-index: 3; pointer-events: none; filter: drop-shadow(0 0 20px #cf30a028); }
+.stack { position: relative; width: 74%; margin: 0 auto; padding-bottom: 42px; }
+.commit { padding: 22px 24px; border-radius: 13px; border: 1px solid #7cecff; background: linear-gradient(130deg,#13badf,#0798c5); box-shadow: 0 0 18px #22d0f232, inset 0 1px 3px #ffffff40; }
+.patch { position: relative; z-index: 2; padding-left: 7%; padding-right: 7%; background: linear-gradient(120deg,#f8217e,#e40e8d); border-color: #ff85c3; box-shadow: 0 0 30px #f8217e50, inset 0 1px 3px #ffffff65; }
+.commit { position: relative; overflow: hidden; }
+.commit::before { content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; background: url('assets/commit-circuits.svg') right center / auto 100% no-repeat; opacity: .16; mask-image: linear-gradient(to right, transparent 25%, #000 80%); }
+.commit::after { content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; background: radial-gradient(ellipse at 85% 5%, #ffffff1c, transparent 65%), linear-gradient(170deg, #ffffff08, transparent 45%, #0d091214); }
+.commit > * { position: relative; z-index: 1; }
+.flutter .commit:nth-child(2)::before { background-position: right -24px center; }
+.commit h1,.commit h2 { font-size: clamp(13px,2cqw,19px); line-height: 1.45; font-weight: 550; margin: 0 0 20px; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; overflow-wrap: anywhere; }
+.commit p { display: flex; align-items: center; gap: 11px; margin: 0; font-size: clamp(10px,1.4cqw,13px); line-height: 1.5; }
+.commit strong { font-weight: 600; }
+.avatar { display: grid; flex: 0 0 29px; height: 29px; place-items: center; border-radius: 50%; font-size: 10px; font-weight: 700; color: #f7f1fa; background: #24152d; border: 1px solid #ffffff60; }
+.back { position: absolute; height: calc(100% - 42px); border: 1px solid #fa65b9; border-radius: 13px; background: linear-gradient(110deg,#df147e,#850878); box-shadow: 0 8px 15px #10051560; }
+.back-one { top: 12px; left: 2%; width: 96%; z-index: 1; }
+.back-two { top: 24px; left: 4%; width: 92%; }
+.back-three { top: 36px; left: 6%; width: 88%; }
+.stack.live { --depth-step: 12px; z-index: 2; clip-path: inset(0 -80px -80px); }
+.stack.live .patch-sizer { visibility: hidden; }
+.stack.live .patch-card { position: absolute; top: 0; left: 0; width: 100%; height: var(--patch-height); transform-origin: center top; }
+#new-commit { position: absolute; z-index: 5; left: 20px; bottom: 16px; border: 1px solid #392842; background: #171020; color: #b9a9c5; padding: 9px 12px; border-radius: 8px; cursor: pointer; }
+#new-commit:focus-visible { outline: 2px solid #f8217e; outline-offset: 3px; }
+.flutter { width: 72%; margin: 12px auto 0; display: grid; gap: 18px; }
+.flutter.live { position: relative; z-index: 0; }
+.flutter.live .flutter-card { position: absolute; left: 0; width: 100%; transform-origin: center center; }
+#new-flutter { position: absolute; z-index: 5; left: 200px; bottom: 16px; border: 1px solid #392842; background: #171020; color: #b9a9c5; padding: 9px 12px; border-radius: 8px; cursor: pointer; }
+#new-flutter:focus-visible { outline: 2px solid #22d0f2; outline-offset: 3px; }
+#motion { position: absolute; z-index: 5; right: 20px; bottom: 16px; border: 1px solid #392842; background: #171020; color: #b9a9c5; padding: 9px 12px; border-radius: 8px; cursor: pointer; }
+#motion:focus-visible { outline: 2px solid #22d0f2; outline-offset: 3px; }
+@media(max-width:600px) {
+  #new-flutter { left: 20px; bottom: 58px; }
+}

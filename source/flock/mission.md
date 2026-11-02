@@ -34,7 +34,7 @@ A related project, called Nest, facilitates option #3 - "fork Flutter themselves
 To take advantage of Flock's bug fixes and features, please see the [Get Started](/flock/get-started)
 guide.
 
-To file a bug for Flock to fix, or a feature for Flock to implement, please see the [File an Issue](/flock/file-an-issue)
+To file a bug for Flock to fix, or a feature for Flock to implement, please see the [File an Issue](/flock/contribute/file-an-issue)
 guide.
 
 To efficiently fork Flutter, yourself, please see the tools available in [Nest](/nest)

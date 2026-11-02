@@ -1,0 +1,32 @@
+@use 'scaffold';
+@use 'theme';
+
+body.nest-page {
+  .nest-hero {
+    box-sizing: border-box;
+    width: 100%;
+    padding: clamp(56px, 8vw, 100px) 24px 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(var(--canvas), var(--surface));
+
+    #logo { display: block; width: 156px; max-width: 50vw; height: auto; margin: 0 0 24px; }
+    #divider { display: block; width: min(100%, 720px); height: auto; margin: 0; }
+    .tagline { max-width: 100%; margin: 24px 0 0; color: var(--accent-light); font-size: clamp(20px, 3vw, 28px); font-weight: 300; line-height: 1.4; letter-spacing: .025em; text-wrap: balance; }
+  }
+
+  main { box-sizing: border-box; width: 100%; max-width: 900px; padding: 24px 40px 88px; }
+  #what-is-it { font-size: 21px; line-height: 1.8; }
+  .emphasis { color: var(--accent-light); font-weight: 600; }
+  #get-started { margin-top: 56px; }
+  #get-started h1 { margin-top: 0; font-size: 34px; }
+
+  @media(max-width:600px) {
+    .nest-hero { padding-bottom: 32px; }
+    main { padding: 16px 24px 64px; }
+    #what-is-it { font-size: 18px; }
+    #get-started { margin-top: 40px; }
+  }
+}

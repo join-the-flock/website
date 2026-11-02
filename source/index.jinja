@@ -4,7 +4,7 @@ tagline: Flutter, by the community, for the community.
 -->
 <!doctype html>
 
-<html lang="en" data-bs-theme="light">
+<html lang="en" data-bs-theme="dark">
 <head>
   <meta charset="utf-8">
   <title>{{  title  }}</title>
@@ -14,110 +14,49 @@ tagline: Flutter, by the community, for the community.
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
   <link rel="manifest" href="/images/favicon/site.webmanifest">
-  <link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg" color="#f8217e">
   <link rel="shortcut icon" href="/images/favicon/favicon.ico">
-  <meta name="theme-color" content="#ffffff">
+  <meta name="theme-color" content="#0D0912">
 
   <!-- Open Graph -->
   <meta property="og:title" content="{{ title }}" />
   <meta property="og:description" content="{{ tagline }}" />
-  <meta property="og:url" content="https://getflocked.dev" />
-  <meta property="og:image" content="https://getflocked.dev/images/flock_social-media.png" />
+  <meta property="og:url" content="https://getflocked.dev{{ url|escape }}" />
+  {{ components.socialImage() }}
 
   <!-- X/Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@suprdeclarative" />
   <meta name="twitter:title" content="{{ title }}" />
   <meta name="twitter:description" content="{{ tagline }}" />
-  <meta name="twitter:image" content="https://getflocked.dev/images/flock_social-media.png" />
 
   <link href="/styles/styles.css" rel="stylesheet">
   <link href="/styles/home.css" rel="stylesheet">
+  <link href="/styles/hero.css" rel="stylesheet">
+  <link href="/styles/features.css" rel="stylesheet">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Fira+Mono:wght@400;500;700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+  <link href="/styles/navigation.css" rel="stylesheet">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-<body>
-  <header>
-    {{ components.navBar() }}
-
-    <img id="logo" src="/images/flock-logo.png" width="156px">
-    <img id="divider" src="/images/header-hr.png">
-    <p class="tagline">Flutter, by the community,<br>for the community</p>
-  </header>
-
-  <main>
-    <section id="what-is-it">
-      <p><span class="emphasis">Flock is Flutter+</span>  •  Flock is a fork of Flutter. Flock stays up to date with Flutter, and also adds new community features.</p>
-    </section>
-
-    <section id="get-started">
-      <h1>Get Started</h1>
-      <p>Configure your Flutter project to use Flock.</p>
-
-      <p class="side-note">For now, Flock is just a direct copy of Flutter. We're working on smoothing out the
-        synchronization process on GitHub. We encourage you to start using Flock, which should
-        exactly match Flutter's current <code>master</code> branch. If you run into any difficulties,
-        please <a href="https://github.com/join-the-flock/nest" target="_blank">file an issue with us</a> so we can fix it!</p>
-
-      <h2>Install FVM</h2>
-      <p>Flutter Version Manager (FVM) lets you install and use multiple versions of Flutter on the
-        same machine. To use Flock, start by <a href="https://fvm.app/documentation/getting-started/installation" target="_blank">installing FVM</a>.</p>
-
-      <h2>Existing FVM Installation</h2>
-      <p>Because of the way that FVM identifies Flutter versions, if you've already installed Flutter <code>master</code> with FVM, you'll need to delete that version before using Flock.</p>
-      <p>To delete an existing version, locate your FVM cache directory, and then delete the subdirectory called "master".</p>
-
-      <h2>Configure FVM for Your Project</h2>
-      <p>Select a Flutter project where you'd like to use Flock. In that project, create a new file
-      called <code>.fvmrc</code> at the root of the Flutter project.</p>
-      <p>Configure <code>.fvmrc</code> to use Flock:</p>
-
-      <pre><code>{
-  "flutter": "master",
-  "flutterUrl": "https://github.com/join-the-flock/flock.git"
-}</code></pre>
-
-      <h2>Install Flock</h2>
-      <p>Open a terminal at your project directory and run <code>fvm flutter --version</code>. FVM should notify
-        you that "Master" is not installed, and then prompt you to install it.</p>
-
-      <code><pre>Flutter SDK: Channel: Master is not installed.
-? Would you like to install it now? (y/n) › yes</pre></code>
-
-      <p>Select "yes" to install the Flock version of Flutter to your FVM cache.</p>
-
-      <h2>Verify Flock Installation</h2>
-      <p>To verify that your Flock installation worked, run <code>fvm flutter --version</code>. Ensure
-        that your Flutter git URL points to <code>https://github.com/join-the-flock/flock.git</code>.</p>
-
-      <pre><code>Flutter 3.27.0-1.0.pre.200 • channel master • https://github.com/join-the-flock/flock.git
-Framework • revision 452ef96537 (16 hours ago) • 2024-10-22 12:37:14 +0000
-Engine • revision e6856502b5
-Tools • Dart 3.7.0 (build 3.7.0-47.0.dev) • DevTools 2.40.1</code></pre>
-
-      <h2>Using Flock</h2>
-      <p>You're now setup to use Flock! Run all of your usual Flutter commands through FVM.</p>
-
-      <pre><code>fvm flutter --version
-
-fvm flutter pub get
-
-fvm flutter run
-
-fvm flutter build
-
-# etc.</code></pre>
-
-      <p>Within your project, FVM commands will be sent to the Flock version of Flutter.</p>
-
-    </section>
+<body class="home">
+  <main class="site-home">
+    {{ components.homeHero() }}
+    {{ components.homeFeatures() }}
   </main>
 
   {{ components.footer() }}
+  <script src="/scripts/hero/commit-content.js"></script>
+  <script src="/scripts/hero/visibility.js"></script>
+  <script src="/scripts/hero/plume.js"></script>
+  <script src="/scripts/hero/edge-glow.js"></script>
+  <script src="/scripts/hero/flock-commits.js"></script>
+  <script src="/scripts/hero/flutter-commits.js"></script>
+  <script src="/scripts/hero/hero-layout.js"></script>
+  <script src="/scripts/features.js"></script>
 </body>
 </html>

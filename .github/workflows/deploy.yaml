@@ -5,25 +5,41 @@ on:
       main
   workflow_dispatch:
 
+permissions:
+  contents: read
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      # Checkout the repository
-      - uses: actions/checkout@v3
+      - name: Check out the repository
+        uses: actions/checkout@v7.0.1
 
-      # Setup a Dart environment
-      - uses: dart-lang/setup-dart@v1
+      - name: Set up Dart
+        uses: dart-lang/setup-dart@v1.8.1
+        with:
+          sdk: stable
 
-      # Download all the packages that the app uses
-      - run: dart pub get
+      - name: Install dependencies
+        run: dart pub get
 
-      # Build the static site
-      - run: dart run bin/main.dart
+      - name: Analyze build code
+        run: dart analyze bin test
 
-      # Zip and upload the static site.
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+      - name: Run tests
+        run: dart test
+
+      - name: Build the static site
+        run: dart run bin/main.dart
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v5.0.0
         with:
           path: ./build
 
@@ -44,4 +60,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v5.0.1

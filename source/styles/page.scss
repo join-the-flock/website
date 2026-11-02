@@ -1,0 +1,28 @@
+.about-page {
+  box-sizing: border-box;
+  max-width: 880px;
+  padding: 88px 40px 112px;
+  color: var(--text-muted);
+  background: radial-gradient(ellipse at 85% 5%, #b12cd009, transparent 50%);
+
+  h1, h2 { color: var(--text-primary); text-align: left; letter-spacing: -.035em; }
+  h1 { margin: 0 0 24px; padding: 0; border: 0; font-size: clamp(42px, 6vw, 64px); }
+  h2 { margin: 56px 0 20px; font-size: 28px; }
+  p { margin: 0 0 22px; line-height: 1.8; }
+  .page-lead { color: #decce7; font-size: 23px; line-height: 1.6; }
+  a, a:visited { color: var(--accent-light); text-underline-offset: 4px; }
+  a:hover { color: var(--accent-cyan); }
+  a:focus-visible { outline: 2px solid var(--accent-cyan); outline-offset: 5px; }
+
+  .about-people { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+  .about-people a { display: flex; align-items: center; gap: 16px; padding: 20px; border: 1px solid var(--border); border-radius: 12px; background: var(--elevated); text-decoration: none; }
+  .about-people img { flex-shrink: 0; border-radius: 50%; object-fit: cover; }
+  .about-people strong { display: block; color: var(--text-primary); font-size: 17px; font-weight: 600; }
+  .about-people span span { font-size: 14px; }
+
+  @media(max-width:600px) {
+    padding: 56px 24px 72px;
+    .page-lead { font-size: 20px; }
+    .about-people { grid-template-columns: 1fr; }
+  }
+}

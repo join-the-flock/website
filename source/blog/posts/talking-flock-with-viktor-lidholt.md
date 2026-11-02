@@ -4,7 +4,7 @@ description: I sit down with Viktor to chat about Flock, and discuss community c
 publishDate: 2024-11-01
 author: 
   name: Matt Carroll
-  avatarUrl: https://secure.gravatar.com/avatar/2b519036dc508c11b0db3463fffbd8ff
+  avatarUrl: /images/team/matt-carroll.jpg
 ---
 On November 1st, 2024, I sat down with Viktor Lidholt to discuss Flock, Nest, and community questions and concerns.
 

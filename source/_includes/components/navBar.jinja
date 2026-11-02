@@ -1,13 +1,18 @@
-<nav>
-  {% if showMenuButton %}
-  <div class="leading">
-    <i id="menuButton" class="fa-solid fa-bars"></i>
-  </div>
-  {% endif %}
-
-  <ul>
-    <li><a href="/flock/get-started">Flock</a></li>
-    <li><a href="/nest">Nest</a></li>
-    <li><a href="/blog">Blog</a></li>
-  </ul>
-</nav>
+<header class="site-header">
+  <nav class="site-nav" aria-label="Main navigation">
+    {% if showMenuButton %}
+    <button id="menuButton" class="section-menu-button" type="button" aria-label="Open section menu" aria-controls="phoneMenuDrawer"><i class="fa-solid fa-bars" aria-hidden="true"></i></button>
+    {% endif %}
+    <a class="brand" href="/" aria-label="Flock home">
+      <img src="/images/flock-nav-logo-66x72.png" width="33" height="36" alt="">
+      <span>Flock</span>
+      <span class="brand-tagline"><span aria-hidden="true">|</span> Flutter++</span>
+    </a>
+    <div class="nav-links">
+      <a href="/flock/get-started"{% if activeSection == "flock" %} aria-current="true"{% endif %}>Flock</a>
+      <a href="/nest"{% if activeSection == "nest" %} aria-current="page"{% endif %}>Nest</a>
+      <a href="/blog"{% if activeSection == "blog" %} aria-current="true"{% endif %}>Blog</a>
+      <a href="/about"{% if activeSection == "about" %} aria-current="page"{% endif %}>About</a>
+    </div>
+  </nav>
+</header>

@@ -1,0 +1,11 @@
+# Activity ribbon v2
+
+References: user-provided looping filmstrip (shape and composition only), activity-ribbon-v1.png (grid content and palette).
+
+Create an original premium 3D website illustration on a truly transparent background.
+Input image 1 is a SHAPE and COMPOSITION reference only: emulate its broad upright film strip snaking through space, with deep successive S bends, overlapping foreground and background surfaces, distant smaller end and a much larger near end reaching toward the viewer at the right. Do not reproduce its stock text or watermarks.
+Input image 2 is the grid CONTENT and PALETTE reference.
+Paint our activity grid onto ONE continuous wide dark plum ribbon whose geometry follows the first reference. The strip is a substantial broad upright sheet, NOT a thin wavy line or a flat horizontal grid. Adapt its looping form to a landscape website illustration, approximately 1.8:1. Show three pronounced alternating deep bends. Distant portion at upper left/back; sweeping middle fold; large face at lower right bursts forward toward the viewer. Natural overlap and coherent foreshortening make the physical depth unmistakable.
+Cover the broad surface edge to edge with evenly spaced small square cells, many rows tall. All cells belong to the same painted grid and conform precisely to the curved surface: no individually rotated or floating tiles. About 70% cyan-blue squares (#22D0F2), about 5% pink-to-purple squares (#F8217E to #B12CD0), about 20% empty dark slots, remaining sparse slots are simple cyan filled bug silhouettes IN PLACE OF squares. Some blue bugs have a centered ordinary upright pink-purple X over them. No bandages.
+Fine tactile texture on squares, subtle pink cell glow, beautiful cyan/pink reflected edge light, dark purple ribbon base, restrained organic atmospheric light fading into actual transparency. Premium polished digital product illustration for a dark purple website. Crisp grid with consistent blue color and subtle lighting from the surface orientation. Preserve legibility of squares and bugs.
+No literal film frames, no sprocket holes, no labels, no words, no branding, no watermark, no ground plane, no white background, no rectangular backdrop. The ribbon has smooth continuous bends, no sharp folds. Static image.
