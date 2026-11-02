@@ -60,3 +60,14 @@ The hero and ribbon use optimized WebP variants. The original PNGs remain in
 `python3 tools/optimize_homepage_images.py` (requires Pillow) to regenerate
 the variants. Fleek keeps its full 1560×1008 resolution and original alpha;
 the ribbon is 920px wide for a sharp 2× rendering at its 460px display width.
+
+## Hero rendering compatibility
+
+Desktop uses the animated WebGL edge glow with premultiplied alpha, so transparent
+pixels cannot contribute pink or blue color to the page. Touch-first devices use
+native CSS shadows around the combined Fleek/Flock group instead; the Canvas 2D
+Matrix background remains animated. The same native glow is used if WebGL is
+unavailable, shader compilation fails, or the graphics context is lost.
+
+Run `node --test test/hero_glow_test.cjs` to check fallback selection. Deployment
+runs these checks alongside the Dart tests.

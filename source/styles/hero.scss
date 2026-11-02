@@ -10,6 +10,8 @@ font-family: Inter, Arial, sans-serif; color: #f7f1fa; line-height: normal; box-
 &::after { content: ''; position: absolute; z-index: 4; pointer-events: none; inset: auto 0 0; height: calc(var(--last-card-height, 116px) * .55 * var(--scene-scale, 1)); background: linear-gradient(to bottom, #0d091200 0%, #0d09120d 12%, #0d09122e 28%, #0d091266 48%, #0d0912ad 68%, #0d0912e8 86%, #0d0912 100%); }
 .flock { position: relative; padding-top: 46.5%; }
 .fleek { position: absolute; width: 100%; height: auto; top: 0; left: 0; z-index: 3; pointer-events: none; filter: drop-shadow(0 0 20px #cf30a028); }
+&.hero--simple-glow .flock { filter: drop-shadow(0 0 5px #f8217e88) drop-shadow(0 0 14px #b12cd04d); }
+&.hero--simple-glow .fleek { filter: none; }
 .stack { position: relative; width: 74%; margin: 0 auto; padding-bottom: 42px; }
 .commit { padding: 22px 24px; border-radius: 13px; border: 1px solid #7cecff; background: linear-gradient(130deg,#13badf,#0798c5); box-shadow: 0 0 18px #22d0f232, inset 0 1px 3px #ffffff40; }
 .patch { position: relative; z-index: 2; padding-left: 7%; padding-right: 7%; background: linear-gradient(120deg,#f8217e,#e40e8d); border-color: #ff85c3; box-shadow: 0 0 30px #f8217e50, inset 0 1px 3px #ffffff65; }

@@ -1,13 +1,23 @@
 (() => {
   const hero = document.querySelector('.hero');
+  function useSimpleGlow() {
+    hero.classList.add('hero--simple-glow');
+  }
+  // Touch-first devices use native group shadows instead of a transparent WebGL overlay.
+  if (matchMedia('(pointer: coarse)').matches) {
+    useSimpleGlow();
+    return;
+  }
   const bird = document.querySelector('.fleek');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const canvas = document.createElement('canvas');
   canvas.className = 'edge-glow';
   canvas.setAttribute('aria-hidden', 'true');
-  const gl = canvas.getContext('webgl', {alpha: true, premultipliedAlpha: false, depth: false, antialias: false});
-  if (!gl) return; // Existing CSS lighting remains available without WebGL.
-  hero.append(canvas);
+  const gl = canvas.getContext('webgl', {alpha: true, premultipliedAlpha: true, depth: false, antialias: false});
+  if (!gl) {
+    useSimpleGlow();
+    return;
+  }
   const mask = document.createElement('canvas');
   const paint = mask.getContext('2d');
   function shader(type, source) {
@@ -17,6 +27,7 @@
     return result;
   }
   const program = gl.createProgram();
+  try {
   gl.attachShader(program, shader(gl.VERTEX_SHADER, `
     attribute vec2 position;
     varying vec2 uv;
@@ -58,11 +69,20 @@
       vec3 warm = mix(violet, pink, .6 + .2 * sin(time * .45 + uv.y * 9.));
       vec3 color = mix(cyan, warm, upper);
       float strength = mix(1., 1.85, upper);
-      gl_FragColor = vec4(color, clamp(edge * wave * strength, 0., mix(.82, .96, upper)));
+      float alpha = clamp(edge * wave * strength, 0., mix(.82, .96, upper));
+      // WebKit can expose RGB from transparent pixels when straight-alpha compositing is used.
+      // Premultiplication also guarantees that fully transparent pixels contain no color.
+      gl_FragColor = vec4(color * alpha, alpha);
     }
   `));
   gl.linkProgram(program);
   if (!gl.getProgramParameter(program, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(program));
+  } catch {
+    gl.deleteProgram(program);
+    useSimpleGlow();
+    return;
+  }
+  hero.append(canvas);
   gl.useProgram(program);
   const buffer = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
@@ -136,7 +156,7 @@
   }
   reduced.addEventListener('change', sync);
   hero.addEventListener('hero-visibility',sync);
-  canvas.addEventListener('webglcontextlost',event=>{event.preventDefault();lost=true;cancelAnimationFrame(frame);canvas.style.display='none';});
+  canvas.addEventListener('webglcontextlost',event=>{event.preventDefault();lost=true;cancelAnimationFrame(frame);canvas.style.display='none';useSimpleGlow();});
   const observer = new ResizeObserver(rebuild);
   observer.observe(hero);observer.observe(document.querySelector('.scene'));
   bird.addEventListener('load',rebuild);

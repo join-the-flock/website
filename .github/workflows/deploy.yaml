@@ -33,6 +33,9 @@ jobs:
       - name: Run tests
         run: dart test
 
+      - name: Test hero compatibility
+        run: node --test test/hero_glow_test.cjs
+
       - name: Build the static site
         run: dart run bin/main.dart
         env:
