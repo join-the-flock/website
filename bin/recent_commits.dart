@@ -6,6 +6,28 @@ const commitSources = {
   'flutter': 'flutter/flutter',
 };
 
+/// Local rebuilds reuse their snapshot until a refresh is explicitly requested.
+/// Deployment passes [refresh] so upstream failures still fail publication.
+Future<void> prepareRecentCommits({
+  File? output,
+  bool cachedOnly = false,
+  bool refresh = false,
+  Future<void> Function(File output)? fetch,
+}) async {
+  if (cachedOnly && refresh) {
+    throw ArgumentError(
+        'Use either --cached-commits or --refresh-commits, not both.');
+  }
+  final snapshot = output ?? File('source/data/recent-commits.json');
+  if (await snapshot.exists() && !refresh) return;
+  if (cachedOnly) {
+    throw StateError(
+      'No cached commit snapshot. Build without --cached-commits first.',
+    );
+  }
+  await (fetch ?? (file) => fetchRecentCommits(output: file))(snapshot);
+}
+
 /// Produces one snapshot only after both upstream requests have succeeded.
 Future<void> writeRecentCommits({
   required File output,
@@ -54,12 +76,10 @@ Map<String, dynamic> normalizeCommit(dynamic value) {
     'authorName': author['name'] as String,
     'authorLogin': account?['login'],
     'avatarUrl': account?['avatar_url'],
-    'authoredAt': DateTime.parse(author['date'] as String)
-        .toUtc()
-        .toIso8601String(),
-    'committedAt': DateTime.parse(committer['date'] as String)
-        .toUtc()
-        .toIso8601String(),
+    'authoredAt':
+        DateTime.parse(author['date'] as String).toUtc().toIso8601String(),
+    'committedAt':
+        DateTime.parse(committer['date'] as String).toUtc().toIso8601String(),
   };
 }
 
@@ -100,7 +120,8 @@ Future<void> fetchRecentCommits({File? output}) async {
             );
           }
           return jsonDecode(body) as List<dynamic>;
-        })().timeout(const Duration(seconds: 30));
+        })()
+            .timeout(const Duration(seconds: 30));
       },
     );
   } finally {

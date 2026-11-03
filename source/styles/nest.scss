@@ -3,14 +3,48 @@
 
 body.nest-page {
   .nest-hero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
     box-sizing: border-box;
     width: 100%;
-    padding: clamp(56px, 8vw, 100px) 24px 48px;
+    min-height: clamp(260px, 33.333svh, 480px);
+    padding: 32px 24px;
+    background: var(--canvas);
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse at 50% 82%, #ffae291c, transparent 38%),
+        radial-gradient(ellipse at 38% 48%, #22d0f211, transparent 48%),
+        radial-gradient(ellipse at 60% 42%, #b12cd02b, transparent 50%),
+        radial-gradient(ellipse at 48% 58%, #f8217e16, transparent 60%);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      background: linear-gradient(var(--canvas), transparent 12%, transparent 90%, var(--canvas));
+    }
+  }
+
+  .nest-atmosphere { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+  .nest-stage { position: absolute; inset: 16px 24px; z-index: 1; display: flex; align-items: center; justify-content: center; }
+  .nest-centerpiece { display: block; width: auto; height: auto; max-width: 100%; max-height: 100%; object-fit: contain; filter: drop-shadow(0 0 7px #b12cd04d) drop-shadow(0 12px 14px #0008); }
+
+  .nest-intro {
+    padding: 32px 0 48px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     text-align: center;
-    background: linear-gradient(var(--canvas), var(--surface));
 
     #logo { display: block; width: 156px; max-width: 50vw; height: auto; margin: 0 0 24px; }
     #divider { display: block; width: min(100%, 720px); height: auto; margin: 0; }
@@ -23,8 +57,22 @@ body.nest-page {
   #get-started { margin-top: 56px; }
   #get-started h1 { margin-top: 0; font-size: 34px; }
 
+  @media(max-width:760px) and (orientation:portrait) {
+    .nest-hero { min-height: clamp(300px, 60svh, 640px); }
+    .nest-stage {
+      inset: 24px 12px;
+      // Cap the drop at the free space below the 1755 × 896 artwork.
+      transform: translateY(clamp(0px, calc((100% - (100vw - 24px) * 896 / 1755) / 2), 25%));
+    }
+  }
+
+  @media(max-height:500px) and (orientation:landscape) {
+    .nest-hero { min-height: 50svh; padding: 24px; }
+    .nest-intro #logo { width: 120px; margin-bottom: 16px; }
+    .nest-intro .tagline { margin-top: 16px; font-size: 20px; }
+  }
+
   @media(max-width:600px) {
-    .nest-hero { padding-bottom: 32px; }
     main { padding: 16px 24px 64px; }
     #what-is-it { font-size: 18px; }
     #get-started { margin-top: 40px; }

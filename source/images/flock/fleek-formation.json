@@ -1,0 +1,27 @@
+{
+  "width": 1200,
+  "height": 600,
+  "birds": {
+    "right": {
+      "x": 829,
+      "y": 14,
+      "width": 355,
+      "height": 271,
+      "asset": "fleek-right.webp"
+    },
+    "left": {
+      "x": -30,
+      "y": -52,
+      "width": 511,
+      "height": 390,
+      "asset": "fleek-left-complete.webp"
+    },
+    "leader": {
+      "x": 0,
+      "y": 30,
+      "width": 1185,
+      "height": 570,
+      "asset": "fleek-leader-complete.webp"
+    }
+  }
+}

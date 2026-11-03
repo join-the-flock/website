@@ -4,15 +4,13 @@ import 'dart:io';
 import 'package:static_shock/static_shock.dart';
 
 import 'recent_commits.dart';
+import 'public_assets.dart';
 
 Future<void> main(List<String> arguments) async {
-  if (arguments.contains('--cached-commits')) {
-    if (!await File('source/data/recent-commits.json').exists()) {
-      throw StateError('No cached commit snapshot. Build without --cached-commits first.');
-    }
-  } else {
-    await fetchRecentCommits();
-  }
+  await prepareRecentCommits(
+    cachedOnly: arguments.contains('--cached-commits'),
+    refresh: arguments.contains('--refresh-commits'),
+  );
 
   // Configure the static website generator.
   final staticShock = StaticShock()
@@ -23,9 +21,11 @@ Future<void> main(List<String> arguments) async {
     ..pick(DirectoryPicker.parse("images"))
     ..pick(DirectoryPicker.parse("data"))
     ..pick(DirectoryPicker.parse("scripts"))
+    ..exclude(const UnpublishedArtworkExcluder())
     ..loadData(DataLoader.fromFunction((context) async => {
-      'recent_commits': jsonDecode(await File('source/data/recent-commits.json').readAsString()),
-    }))
+          'recent_commits': jsonDecode(
+              await File('source/data/recent-commits.json').readAsString()),
+        }))
     // All 3rd party behavior is added through plugins, even the behavior
     // shipped with Static Shock.
     ..plugin(const MarkdownPlugin())

@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <title>{{  title  }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{{ description|escape }}">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
@@ -16,7 +17,7 @@
 
   <!-- Open Graph -->
   <meta property="og:title" content="{{ title }}" />
-  <meta property="og:description" content="{{ description }}" />
+  <meta property="og:description" content="{{ description|escape }}" />
   <meta property="og:url" content="https://getflocked.dev{{ url|escape }}" />
   {{ components.socialImage() }}
 
@@ -24,7 +25,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@suprdeclarative" />
   <meta name="twitter:title" content="{{ title }}" />
-  <meta name="twitter:description" content="{{ description }}" />
+  <meta name="twitter:description" content="{{ description|escape }}" />
 
   <link href="/styles/styles.css" rel="stylesheet">
   <link href="/styles/guide.css" rel="stylesheet">
@@ -33,18 +34,47 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Fira+Mono:wght@400;500;700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
   <link href="/styles/navigation.css" rel="stylesheet">
+  <script src="/scripts/flock-section-navigation.js" defer></script>
+  {% if code_examples %}
+  <link href="/styles/code-examples.css" rel="stylesheet">
+  <script src="/scripts/vendor/prism/prism-flock.min.js" defer></script>
+  <script src="/scripts/code-copy-controls.js" defer></script>
+  {% endif %}
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body class="themed guide-page">
-{{ components.navBar({"showMenuButton": "true", "activeSection": "flock"}) }}
-<header>
-
-  <a href="/" id="logo">
-    <img src="/images/flock-logo.png" width="96px">
-  </a>
-  <img id="divider" src="/images/header-hr.png">
+{{ components.navBar({"activeSection": "flock"}) }}
+{% if show_hero %}
+<section class="flock-hero" aria-label="Three Fleeks leading a Dash toward the viewer">
+  <div class="flock-storm" aria-hidden="true">
+    <div class="storm-clouds"></div>
+    <canvas class="storm-atmosphere"></canvas>
+  </div>
+  <div class="flock-flight-stage">
+    <img class="flight-group flight-dash" src="/images/flock/dash-exhausted.webp" width="600" height="334" alt="An exhausted, slightly unhappy blue Dash flying toward the viewer behind the Fleeks." fetchpriority="high">
+    <svg class="flight-group flight-fleeks" width="1200" height="600" viewBox="0 0 1200 600" role="img" aria-labelledby="fleek-formation-title">
+      <title id="fleek-formation-title">Three pink Fleeks approaching: a clockwise-banked leader, a closer left companion, and a smaller right companion farther behind.</title>
+      <image class="fleek-bird fleek-right" href="/images/flock/fleek-right.webp" x="829" y="14" width="355" height="271" />
+      <image class="fleek-bird fleek-left" href="/images/flock/fleek-left-complete.webp" x="-30" y="-52" width="511" height="390" />
+      <image class="fleek-bird fleek-leader" href="/images/flock/fleek-leader-complete.webp" x="0" y="30" width="1185" height="570" />
+    </svg>
+  </div>
+</section>
+<script src="/scripts/flock-flight.js" defer></script>
+<script src="/scripts/flock-storm.js" defer></script>
+{% endif %}
+<nav class="mobile-section-nav" aria-label="Flock sections">
+  <div class="section-nav-links">
+    {% for menuItem in side_menu.items %}
+    {% set menuItemUrlPath = side_menu.base_path + "/" + menuItem.id %}
+    <a href="{{ menuItemUrlPath }}"{% if isCurrentPage(menuItemUrlPath) %} aria-current="page"{% endif %}>{{ menuItem.title }}</a>
+    {% endfor %}
+  </div>
+</nav>
+<header class="flock-page-heading">
+  {{ components.brand({"hideTagline": true}) }}
 </header>
 
 <main>
@@ -70,52 +100,5 @@
 
 {{ components.footer() }}
 
-<!-- Fullscreen drawer menu that's used on phones when we have no side menu -->
-<div id="phoneMenuDrawer">
-  <div id="scrim">&nbsp;</div>
-
-  <div id="drawer">
-    <div id="toolbar">
-      <i id="drawerExitButton" class="fa-solid fa-xmark"></i>
-    </div>
-
-    <nav id="drawerMenu">
-
-      {{ components.sideMenu({"side_menu": side_menu, "isCurrentPage": isCurrentPage}) }}
-
-    </nav>
-  </div>
-</div>
-
-<script>
-const menuButton = document.getElementById("menuButton");
-
-const phoneMenuDrawer = document.getElementById("phoneMenuDrawer");
-const scrim = document.getElementById("scrim");
-const drawer = document.getElementById("drawer");
-const drawerExitButton = document.getElementById("drawerExitButton");
-
-// Open drawer on menu button click.
-menuButton.addEventListener(
-  "click",
-  (ev) => {
-    phoneMenuDrawer.style.pointerEvents = "auto";
-    scrim.style.opacity = 1;
-    drawer.style.left = 0;
-  },
-  false,
-);
-
-// Close drawer on exit button click.
-drawerExitButton.addEventListener(
-  "click",
-  (ev) => {
-    phoneMenuDrawer.style.pointerEvents = "none";
-    scrim.style.opacity = 0;
-    drawer.style.left = "-100%";
-  },
-  false,
-);
-</script>
 </body>
 </html>

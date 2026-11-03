@@ -43,14 +43,20 @@ tagline: Tools for hatching new Flutters.
 
 <body class="themed nest-page">
 {{ components.navBar({"activeSection": "nest"}) }}
-<header class="nest-hero">
-
-  <img id="logo" src="/images/nest-logo.png" width="156" height="102" alt="Nest">
-  <img id="divider" src="/images/header-hr.png" alt="">
-  <p class="tagline">Tools for hatching new Flutters.</p>
-</header>
+<section class="nest-hero" aria-label="Nest">
+  <canvas class="nest-atmosphere" aria-hidden="true"></canvas>
+  <div class="nest-stage">
+    <img class="nest-centerpiece" src="/images/nest/nest-with-eggs.webp" width="1755" height="896" alt="Golden, pink, purple, and speckled eggs gathered in a golden nest." fetchpriority="high">
+  </div>
+</section>
 
 <main>
+  <div class="nest-intro">
+    <img id="logo" src="/images/nest-logo.png" width="156" height="102" alt="Nest">
+    <img id="divider" src="/images/header-hr.png" alt="">
+    <p class="tagline">Tools for hatching new Flutters.</p>
+  </div>
+
   <section id="what-is-it">
     <p><span class="emphasis">Nest</span>  •  Nest is a collection of scripts, extensions, and
       education designed to help anyone create and maintain a Flutter fork. Nest is the tooling that makes Flock possible.</p>
@@ -64,5 +70,6 @@ tagline: Tools for hatching new Flutters.
 </main>
 
 {{ components.footer() }}
+<script src="/scripts/nest-hero.js"></script>
 </body>
 </html>

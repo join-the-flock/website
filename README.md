@@ -1,10 +1,15 @@
 # Flock website
 
 Run `dart pub get`, then `dart run bin/main.dart` to build the site.
-For local design iterations, use `dart run bin/main.dart --cached-commits` to
-reuse the last successful commit snapshot without requesting GitHub again.
+Local builds automatically reuse the last successful commit snapshot. Saving
+files and rebuilding does not request GitHub again. If no snapshot exists, the
+first build fetches it once; the cache remains in use until explicitly refreshed.
 
-Before generating pages, the build fetches the latest 20 commits on `master` from
+Use `dart run bin/main.dart --refresh-commits` to refresh commits and build, or
+`dart run bin/main.dart --cached-commits` to require an existing snapshot and
+guarantee no GitHub requests. These two options cannot be combined.
+
+When refreshing, the build fetches the latest 20 commits on `master` from
 `join-the-flock/flock-patches` and `flutter/flutter` using GitHub's commits API.
 It writes `source/data/recent-commits.json`, which Static Shock copies to
 `build/data/recent-commits.json` (served at `/data/recent-commits.json`).
@@ -16,9 +21,11 @@ committer timestamps. Unlinked Git authors retain their original name.
 
 Set `GITHUB_TOKEN` to use authenticated requests. GitHub Actions supplies its
 build token automatically; public repositories also work without a token.
-The build fails if either upstream request fails or returns no commits, rather
-than publishing a partial feed. The snapshot refreshes only when the website
-build runs; it does not poll GitHub in a visitor's browser.
+Deployment explicitly uses `--refresh-commits`, so published builds fetch fresh
+data. A requested refresh fails if either upstream request fails or returns no
+commits, rather than publishing a partial feed. The previous snapshot is retained
+on failure, allowing subsequent local builds to keep working without retrying
+GitHub. The website does not poll GitHub in a visitor's browser.
 
 Run `dart run bin/recent_commits.dart` to refresh just the snapshot, or
 `dart test test/recent_commits_test.dart` to run the feed tests.
@@ -53,13 +60,37 @@ a consistent frame. Capture-only CSS hides the navigation and each commit's
 children with `visibility: hidden`, preserving card dimensions and text wrapping.
 It checks those dimensions before saving. These overrides never affect visitors.
 
-## Homepage image variants
+## Optimized artwork
 
 The hero and ribbon use optimized WebP variants. The original PNGs remain in
 `source/images/hero/` and `source/images/features/`. Run
 `python3 tools/optimize_homepage_images.py` (requires Pillow) to regenerate
-the variants. Fleek keeps its full 1560×1008 resolution and original alpha;
-the ribbon is 920px wide for a sharp 2× rendering at its 460px display width.
+the variants, including the Nest hero artwork and Flock flight formations. Fleek keeps its full 1560×1008
+resolution and original alpha; the ribbon is 920px wide for a sharp 2× rendering
+at its 460px display width.
+
+`bin/public_assets.dart` selects the active artwork published from the hero,
+features, Flock and Nest image directories. Originals and earlier variants stay
+in source but are excluded from deployment. Update the selection when changing
+the artwork used by a public page. Other branding, avatars, social images and
+favicon files remain published normally.
+
+Prism's bundle and MIT license are served locally from
+`source/scripts/vendor/prism/`. Its maintenance notes are in
+`design/vendor/prism.md`, outside the published source directory.
+
+Retired Flock contributor URLs remain available as static HTML redirects:
+the issue guide points to the Nest issue form, and the setup/change guides point
+to the Nest repository. Their template is `layouts/redirect.jinja`.
+
+## Nest hero
+
+`source/styles/nest.scss` controls the shorter responsive hero. Its transparent
+nest-and-eggs centerpiece uses `source/images/nest/nest-with-eggs.webp`; the
+high-resolution PNG and cutout prompt are preserved. `source/scripts/nest-hero.js`
+draws the surrounding code streams and sparks with Canvas 2D. It renders at
+about 30fps with a capped pixel ratio, pauses beyond a 200px viewport buffer or
+in hidden tabs, and renders a still frame for reduced-motion preferences.
 
 ## Hero rendering compatibility
 

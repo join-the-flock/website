@@ -1,4 +1,5 @@
 layout: layouts/guide.jinja
+show_hero: true
 
 side_menu:
   base_path: /flock
@@ -7,12 +8,3 @@ side_menu:
       id: get-started
     - title: Mission
       id: mission
-    - title: Contributors
-      id: contribute
-      items:
-      - title: File an Issue
-        id: file-an-issue
-      - title: Setup to Contribute
-        id: setup-to-contribute
-      - title: Contribute a Change
-        id: contribute-a-change

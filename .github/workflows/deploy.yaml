@@ -37,7 +37,7 @@ jobs:
         run: node --test test/hero_glow_test.cjs
 
       - name: Build the static site
-        run: dart run bin/main.dart
+        run: dart run bin/main.dart --refresh-commits
         env:
           GITHUB_TOKEN: ${{ github.token }}
 
