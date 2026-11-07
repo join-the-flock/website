@@ -160,7 +160,8 @@ void main() {
     final data = jsonDecode(await output.readAsString());
     expect(data['flock'], hasLength(1));
     expect(data['flutter'], hasLength(1));
-    expect(data['sources']['flock']['branch'], 'master');
+    expect(data['sources']['flock']['branch'], 'main');
+    expect(data['sources']['flutter']['branch'], 'master');
   });
 
   test('does not replace the previous snapshot if either feed fails', () async {

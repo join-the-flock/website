@@ -7,6 +7,7 @@ main {
 }
 
 #contentColumns {
+  --page-menu-offset: 172px;
   display: flex;
   flex-direction: row;
 }
@@ -17,7 +18,7 @@ main {
   width: 200px;
   margin-right: 48px;
 
-  @media (min-width: scaffold.$smallMax) {
+  @media (min-width: scaffold.$mediumMax) {
     display: block;
   }
 }
@@ -27,15 +28,74 @@ main {
   min-width: 0;
 }
 
-#rightSpacerColumn {
+#pageContentsColumn {
   display: none;
-
-  width: 200px;
-  height: 1px;
+  flex: 0 0 200px;
+  min-width: 0;
   margin-left: 48px;
 
   @media (min-width: scaffold.$mediumMax) {
     display: block;
+  }
+}
+
+body.guide-page .page-contents {
+  font-family: Inter, Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  padding-block: 20px;
+  margin-bottom: 28px;
+  border-bottom: 1px solid var(--border);
+
+  ul { list-style: none; padding: 0; margin: 0; }
+  li { margin: 0; }
+  ul ul { padding-left: 14px; border-left: 1px solid var(--border); margin-left: 3px; }
+  a, a:visited {
+    display: block;
+    padding-block: 6px;
+    color: var(--text-muted);
+    text-decoration: none;
+    overflow-wrap: anywhere;
+  }
+  a:hover, a[aria-current] { color: var(--accent-light); }
+  a:focus-visible { outline: 2px solid var(--accent-pink); outline-offset: 3px; border-radius: 2px; }
+}
+
+@media (max-width: 1199px) {
+  body.guide-page #contentColumn > .page-contents {
+    padding: 20px clamp(16px, 4vw, 40px) 28px;
+    margin-bottom: 36px;
+    font-size: 17px;
+    line-height: 1.5;
+
+    > ul { max-width: 760px; margin-inline: auto; }
+    > ul > li { margin-bottom: 8px; }
+    > ul > li > a { color: var(--text-primary); font-weight: 500; }
+    a, a:visited {
+      box-sizing: border-box;
+      min-height: 44px;
+      padding-block: 9px;
+    }
+    ul ul {
+      margin: 2px 0 8px 3px;
+      padding-left: 20px;
+      font-size: 15px;
+    }
+    a:hover, a[aria-current] { color: var(--accent-light); }
+  }
+}
+
+@media (min-width: scaffold.$mediumMax) {
+  #pageContentsColumn .page-contents {
+    position: sticky;
+    top: 24px;
+    max-height: calc(100svh - 48px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding-block: 0;
+    border-bottom: 0;
+    margin-top: var(--page-menu-offset);
+    margin-bottom: 0;
   }
 }
 
@@ -87,17 +147,17 @@ main {
 }
 
 #sideMenu {
-  margin-top: 172px;
+  margin-top: var(--page-menu-offset);
 }
 
 
 body.guide-page {
-  .flock-page-heading .brand { margin-bottom: 0; padding-right: 42px; }
+  :is(.flock-page-heading, .nest-page-heading) .brand { margin-bottom: 0; padding-right: 42px; }
   @media(max-width:760px) {
-    .flock-page-heading .brand { padding-right: 37px; }
+    :is(.flock-page-heading, .nest-page-heading) .brand { padding-right: 37px; }
   }
   .mobile-section-nav { display: none; }
-  @media(max-width:799px) {
+  @media(max-width:1199px) {
     .mobile-section-nav {
       display: block;
       position: sticky;
@@ -202,8 +262,12 @@ body.guide-page {
     .flock-hero { min-height: 50svh; }
   }
   main { box-sizing: border-box; width: 100%; padding: 40px 40px 88px; }
-  .flock-page-heading + main { padding-top: 8px; }
+  :is(.flock-page-heading, .nest-page-heading) + main { padding-top: 8px; }
   #contentColumn { line-height: 1.8; }
+  #contentColumn :not(pre) > code { overflow-wrap: anywhere; }
+  @media(min-width:1200px) {
+    #contentColumn :is(h1, h2, h3) { scroll-margin-top: 24px; }
+  }
   #contentColumn h1 { margin-top: 28px; }
   #contentColumn > h1:first-child { margin-top: 8px; }
   .page-intro { margin: 40px 0; font-size: 24px; font-weight: 400; line-height: 1.65; letter-spacing: normal; }

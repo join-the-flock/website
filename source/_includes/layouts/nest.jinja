@@ -1,0 +1,82 @@
+<!doctype html>
+
+<html lang="en" data-bs-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <title>{{  title  }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{{ description|escape }}">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/images/favicon/site.webmanifest">
+  <link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg" color="#f8217e">
+  <link rel="shortcut icon" href="/images/favicon/favicon.ico">
+  <meta name="theme-color" content="#0d0912">
+
+  <link rel="canonical" href="https://getflocked.dev{{ url|escape }}">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="{{ title }}" />
+  <meta property="og:description" content="{{ description|escape }}" />
+  <meta property="og:url" content="https://getflocked.dev{{ url|escape }}" />
+  {{ components.socialImage() }}
+
+  <!-- X/Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@suprdeclarative" />
+  <meta name="twitter:title" content="{{ title }}" />
+  <meta name="twitter:description" content="{{ description|escape }}" />
+
+  <link href="/styles/styles.css" rel="stylesheet">
+  <link href="/styles/guide.css" rel="stylesheet">
+  <link href="/styles/nest.css" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Fira+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="/styles/navigation.css" rel="stylesheet">
+  <script src="/scripts/table-of-contents.js" defer></script>
+  <script src="/scripts/section-navigation.js" defer></script>
+  {% if code_examples %}
+  <link href="/styles/code-examples.css" rel="stylesheet">
+  <script src="/scripts/vendor/prism/prism-flock.min.js" defer></script>
+  <script src="/scripts/code-copy-controls.js" defer></script>
+  {% endif %}
+
+</head>
+
+<body class="themed guide-page nest-page">
+{{ components.navBar({"activeSection": "nest"}) }}
+<section class="nest-hero" aria-hidden="true">
+  <canvas class="nest-atmosphere" aria-hidden="true"></canvas>
+  <div class="nest-stage">
+    <img class="nest-centerpiece" src="/images/nest/nest-with-eggs.webp" width="1755" height="896" alt="" fetchpriority="high">
+  </div>
+</section>
+{{ components.sectionNav({"section_name": "Nest", "side_menu": side_menu, "isCurrentPage": isCurrentPage}) }}
+
+<header class="nest-page-heading">
+  {{ components.brand({"brand_name": "Nest", "brand_url": "/nest/overview", "logo_url": "/images/nest/nest-logo-66x72.png", "hideTagline": true}) }}
+</header>
+
+<main>
+  <div id="contentColumns">
+    <div id="sideMenuColumn">
+      <nav id="sideMenu" aria-label="Nest sections">
+        {{ components.sideMenu({"side_menu": side_menu, "isCurrentPage": isCurrentPage}) }}
+      </nav>
+    </div>
+    <div id="contentColumn">
+      <h1>{{ section_title }}</h1>
+      {{ content }}
+    </div>
+    <aside id="pageContentsColumn" aria-label="Page contents"></aside>
+  </div>
+</main>
+
+{{ components.footer() }}
+<script src="/scripts/nest-hero.js"></script>
+</body>
+</html>

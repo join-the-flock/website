@@ -1,12 +1,9 @@
 <header class="site-header">
   <nav class="site-nav" aria-label="Main navigation">
-    {% if showMenuButton %}
-    <button id="menuButton" class="section-menu-button" type="button" aria-label="Open section menu" aria-controls="phoneMenuDrawer"><i class="fa-solid fa-bars" aria-hidden="true"></i></button>
-    {% endif %}
     {{ components.brand() }}
     <div class="nav-links">
       <a href="/flock/get-started"{% if activeSection == "flock" %} aria-current="true"{% endif %}>Flock</a>
-      <a href="/nest"{% if activeSection == "nest" %} aria-current="page"{% endif %}>Nest</a>
+      <a href="/nest/overview"{% if activeSection == "nest" %} aria-current="true"{% endif %}>Nest</a>
       <a href="/blog"{% if activeSection == "blog" %} aria-current="true"{% endif %}>Blog</a>
       <a href="/about"{% if activeSection == "about" %} aria-current="page"{% endif %}>About</a>
     </div>

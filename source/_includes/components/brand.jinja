@@ -1,6 +1,6 @@
-<a class="brand" href="/" aria-label="Flock home">
-  <img src="/images/flock-nav-logo-66x72.png" width="33" height="36" alt="">
-  <span>Flock</span>
+<a class="brand" href="{{ brand_url if brand_url else '/' }}" aria-label="{{ brand_name if brand_name else 'Flock' }} home">
+  <img src="{{ logo_url if logo_url else '/images/flock-nav-logo-66x72.png' }}" width="33" height="36" alt="">
+  <span>{{ brand_name if brand_name else 'Flock' }}</span>
   {% if not hideTagline %}
   <span class="brand-tagline"><span aria-hidden="true">|</span> Flutter++</span>
   {% endif %}

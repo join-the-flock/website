@@ -24,11 +24,11 @@ Flock rebases daily on top of Flutter’s master, beta, and stable branches. It 
 
 <div class="about-people">
   <a href="https://x.com/suprdeclarative">
-    <img src="/images/team/matt-carroll.jpg" alt="" width="56" height="56" loading="lazy">
+    <img src="/images/team/matt-carroll-192.webp" alt="" width="56" height="56" loading="lazy">
     <span><strong>Matt Carroll</strong><span>@SuprDeclarative</span></span>
   </a>
   <a href="https://x.com/jezell">
-    <img src="/images/team/jesse-ezell.jpg" alt="" width="56" height="56" loading="lazy">
+    <img src="/images/team/jesse-ezell-192.webp" alt="" width="56" height="56" loading="lazy">
     <span><strong>Jesse Ezell</strong><span>@jezell</span></span>
   </a>
 </div>

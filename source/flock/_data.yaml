@@ -8,3 +8,5 @@ side_menu:
       id: get-started
     - title: Mission
       id: mission
+    - title: Contribute
+      id: contribute

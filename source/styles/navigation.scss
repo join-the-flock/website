@@ -17,25 +17,8 @@
 }
 .hero > .site-header { position: absolute; inset: 0 0 auto; }
 
-.site-header .section-menu-button {
-  display: none;
-  appearance: none;
-  border: 1px solid #b9a9c533;
-  border-radius: 5px;
-  background: transparent;
-  color: #f7f1fa;
-  padding: 7px;
-  font-size: 16px;
-  cursor: pointer;
-}
-.site-header .section-menu-button:focus-visible { outline: 2px solid #f8217e; outline-offset: 3px; }
-@media(max-width:799px) { .site-header .section-menu-button { display: block; } }
-@media(max-width:760px) {
-  .site-header .site-nav { position: relative; }
-  .site-header .section-menu-button { position: absolute; left: 0; top: 6px; }
-}
 
-:is(.site-header, .flock-page-heading) {
+:is(.site-header, .flock-page-heading, .nest-page-heading) {
 .brand, .brand:visited { display: flex; align-items: center; gap: 9px; flex-shrink: 0; color: #f7f1fa; text-decoration: none; }
 .brand img { width: 33px; height: 36px; object-fit: contain; }
 .brand span { font-size: 22px; font-weight: 650; letter-spacing: -.6px; }

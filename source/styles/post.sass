@@ -7,6 +7,7 @@ body.post-page {
   main > h1 { margin-top: 28px; font-size: clamp(30px, 4vw, 42px); }
   main img, main iframe { max-width: 100%; }
   main img { height: auto; }
+  main iframe[src*="youtube.com"] { display: block; width: 100%; max-width: 560px; height: auto; aspect-ratio: 16 / 9; margin-inline: auto; }
   .author { color: var(--text-muted); font-size: 14px; line-height: 1.6; }
   .author .avatar { flex-shrink: 0; object-fit: cover; }
   @media(max-width:600px) {

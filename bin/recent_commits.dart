@@ -6,6 +6,11 @@ const commitSources = {
   'flutter': 'flutter/flutter',
 };
 
+const commitBranches = {
+  'join-the-flock/flock-patches': 'main',
+  'flutter/flutter': 'master',
+};
+
 /// Local rebuilds reuse their snapshot until a refresh is explicitly requested.
 /// Deployment passes [refresh] so upstream failures still fail publication.
 Future<void> prepareRecentCommits({
@@ -38,7 +43,10 @@ Future<void> writeRecentCommits({
     'generatedAt': (generatedAt ?? DateTime.now()).toUtc().toIso8601String(),
     'sources': {
       for (final source in commitSources.entries)
-        source.key: {'repository': source.value, 'branch': 'master'},
+        source.key: {
+          'repository': source.value,
+          'branch': commitBranches[source.value],
+        },
     },
   };
   for (final source in commitSources.entries) {
@@ -91,7 +99,7 @@ Future<void> fetchRecentCommits({File? output}) async {
       output: output ?? File('source/data/recent-commits.json'),
       loadCommits: (repository) async {
         final uri = Uri.https('api.github.com', '/repos/$repository/commits', {
-          'sha': 'master',
+          'sha': commitBranches[repository],
           'per_page': '20',
         });
         return (() async {

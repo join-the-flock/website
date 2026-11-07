@@ -4,7 +4,7 @@ description: These are the three major phases of Flock development.
 publishDate: 2024-10-31
 author: 
   name: Matt Carroll
-  avatarUrl: /images/team/matt-carroll.jpg
+  avatarUrl: /images/team/matt-carroll-192.webp
 ---
 We recently announced a couple new efforts: Flock, a community fork of Flutter that acts as a 
 pressure release valve for Flutter users, and Nest, a collection of tools to help Flutter teams

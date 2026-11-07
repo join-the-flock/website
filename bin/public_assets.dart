@@ -32,6 +32,7 @@ const _publishedArtwork = {
   'images/flock/fleek-leader-complete.webp',
   'images/flock/storm-wall.webp',
   'images/nest/nest-with-eggs.webp',
+  'images/nest/nest-logo-66x72.png',
 };
 
 const _retiredImages = {

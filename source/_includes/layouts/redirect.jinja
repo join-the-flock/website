@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ title|escape }}</title>
   <meta http-equiv="refresh" content="0; url={{ redirect_url|escape }}">
-  <link rel="canonical" href="{{ redirect_url|escape }}">
+  <link rel="canonical" href="{{ (canonical_url if canonical_url else redirect_url)|escape }}">
   <meta name="robots" content="noindex">
 </head>
 <body>
   <h1>{{ title|escape }}</h1>
-  <p>This page has moved. <a href="{{ redirect_url|escape }}">Continue on GitHub</a>.</p>
+  <p>This page has moved. <a href="{{ redirect_url|escape }}">{{ redirect_label if redirect_label else 'Continue on GitHub' }}</a>.</p>
 </body>
 </html>

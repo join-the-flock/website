@@ -4,7 +4,7 @@ description: Flock and Nest are migrating to https://getflocked.dev. This is why
 publishDate: 2024-11-06
 author: 
   name: Matt Carroll
-  avatarUrl: /images/team/matt-carroll.jpg
+  avatarUrl: /images/team/matt-carroll-192.webp
 ---
 The Flock is migrating to [https://getflocked.dev](https://getflocked.dev) and
 [https://github.com/join-the-flock](https://github.com/join-the-flock).

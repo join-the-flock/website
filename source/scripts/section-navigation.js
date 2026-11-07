@@ -1,8 +1,8 @@
 (() => {
   const nav = document.querySelector('.mobile-section-nav');
   if (!nav) return;
-  const mobile = matchMedia('(max-width: 799px)');
-  const key = 'flock-section-scroll';
+  const mobile = matchMedia('(max-width: 1199px)');
+  const key = 'section-scroll';
   const pageKey = url => url.pathname.replace(/\/+$/, '') + url.search;
   const current = pageKey(new URL(location.href));
 

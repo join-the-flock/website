@@ -1,0 +1,11 @@
+layout: layouts/nest.jinja
+
+side_menu:
+  base_path: /nest
+  items:
+    - title: Overview
+      id: overview
+    - title: Patches
+      id: patches
+    - title: GitHub Workflows
+      id: github-workflows

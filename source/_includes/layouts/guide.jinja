@@ -15,6 +15,8 @@
   <link rel="shortcut icon" href="/images/favicon/favicon.ico">
   <meta name="theme-color" content="#0d0912">
 
+  <link rel="canonical" href="https://getflocked.dev{{ url|escape }}">
+
   <!-- Open Graph -->
   <meta property="og:title" content="{{ title }}" />
   <meta property="og:description" content="{{ description|escape }}" />
@@ -32,30 +34,29 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Fira+Mono:wght@400;500;700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Fira+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <link href="/styles/navigation.css" rel="stylesheet">
-  <script src="/scripts/flock-section-navigation.js" defer></script>
+  <script src="/scripts/table-of-contents.js" defer></script>
+  <script src="/scripts/section-navigation.js" defer></script>
   {% if code_examples %}
   <link href="/styles/code-examples.css" rel="stylesheet">
   <script src="/scripts/vendor/prism/prism-flock.min.js" defer></script>
   <script src="/scripts/code-copy-controls.js" defer></script>
   {% endif %}
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body class="themed guide-page">
 {{ components.navBar({"activeSection": "flock"}) }}
 {% if show_hero %}
-<section class="flock-hero" aria-label="Three Fleeks leading a Dash toward the viewer">
+<section class="flock-hero" aria-hidden="true">
   <div class="flock-storm" aria-hidden="true">
     <div class="storm-clouds"></div>
     <canvas class="storm-atmosphere"></canvas>
   </div>
   <div class="flock-flight-stage">
-    <img class="flight-group flight-dash" src="/images/flock/dash-exhausted.webp" width="600" height="334" alt="An exhausted, slightly unhappy blue Dash flying toward the viewer behind the Fleeks." fetchpriority="high">
-    <svg class="flight-group flight-fleeks" width="1200" height="600" viewBox="0 0 1200 600" role="img" aria-labelledby="fleek-formation-title">
-      <title id="fleek-formation-title">Three pink Fleeks approaching: a clockwise-banked leader, a closer left companion, and a smaller right companion farther behind.</title>
+    <img class="flight-group flight-dash" src="/images/flock/dash-exhausted.webp" width="600" height="334" alt="" fetchpriority="high">
+    <svg class="flight-group flight-fleeks" width="1200" height="600" viewBox="0 0 1200 600" aria-hidden="true">
       <image class="fleek-bird fleek-right" href="/images/flock/fleek-right.webp" x="829" y="14" width="355" height="271" />
       <image class="fleek-bird fleek-left" href="/images/flock/fleek-left-complete.webp" x="-30" y="-52" width="511" height="390" />
       <image class="fleek-bird fleek-leader" href="/images/flock/fleek-leader-complete.webp" x="0" y="30" width="1185" height="570" />
@@ -65,14 +66,7 @@
 <script src="/scripts/flock-flight.js" defer></script>
 <script src="/scripts/flock-storm.js" defer></script>
 {% endif %}
-<nav class="mobile-section-nav" aria-label="Flock sections">
-  <div class="section-nav-links">
-    {% for menuItem in side_menu.items %}
-    {% set menuItemUrlPath = side_menu.base_path + "/" + menuItem.id %}
-    <a href="{{ menuItemUrlPath }}"{% if isCurrentPage(menuItemUrlPath) %} aria-current="page"{% endif %}>{{ menuItem.title }}</a>
-    {% endfor %}
-  </div>
-</nav>
+{{ components.sectionNav({"section_name": "Flock", "side_menu": side_menu, "isCurrentPage": isCurrentPage}) }}
 <header class="flock-page-heading">
   {{ components.brand({"hideTagline": true}) }}
 </header>
@@ -93,7 +87,7 @@
     {{ content }}
     </div>
 
-    <div id="rightSpacerColumn">&nbsp;</div>
+    <aside id="pageContentsColumn" aria-label="Page contents"></aside>
   </div>
 
 </main>

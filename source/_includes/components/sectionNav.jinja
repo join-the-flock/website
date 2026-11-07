@@ -1,0 +1,8 @@
+<nav class="mobile-section-nav" aria-label="{{ section_name }} sections">
+  <div class="section-nav-links">
+    {% for menuItem in side_menu.items %}
+    {% set menuItemUrlPath = side_menu.base_path + "/" + menuItem.id %}
+    <a href="{{ menuItemUrlPath }}"{% if isCurrentPage(menuItemUrlPath) %} aria-current="page"{% endif %}>{{ menuItem.title }}</a>
+    {% endfor %}
+  </div>
+</nav>

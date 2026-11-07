@@ -1,3 +1,9 @@
+@use 'image-hero';
+
+.about-hero {
+  @include image-hero.frame('/images/about/creators-in-chairs.webp', 1920, 806);
+}
+
 .about-page {
   box-sizing: border-box;
   max-width: 880px;

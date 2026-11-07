@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <title>{{  title  }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{{ description|escape }}">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
@@ -14,9 +15,11 @@
   <link rel="shortcut icon" href="/images/favicon/favicon.ico">
   <meta name="theme-color" content="#0D0912">
 
+  <link rel="canonical" href="https://getflocked.dev{{ url|escape }}">
+
   <!-- Open Graph -->
   <meta property="og:title" content="{{ title }}" />
-  <meta property="og:description" content="{{ description }}" />
+  <meta property="og:description" content="{{ description|escape }}" />
   <meta property="og:url" content="https://getflocked.dev{{ url|escape }}" />
   {{ components.socialImage() }}
 
@@ -24,7 +27,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@suprdeclarative" />
   <meta name="twitter:title" content="{{ title }}" />
-  <meta name="twitter:description" content="{{ description }}" />
+  <meta name="twitter:description" content="{{ description|escape }}" />
 
   <link href="/styles/styles.css" rel="stylesheet">
   <link href="/styles/home.css" rel="stylesheet">
@@ -32,14 +35,16 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Fira+Mono:wght@400;500;700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
   <link href="/styles/navigation.css" rel="stylesheet">
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body class="home">
   {{ components.navBar({"activeSection": "about"}) }}
+  <section class="about-hero" aria-hidden="true">
+    <img src="/images/about/creators-in-chairs.webp" width="1920" height="806" alt="" fetchpriority="high">
+  </section>
   <main class="about-page">
     {{ content }}
   </main>

@@ -4,7 +4,7 @@ description: I sit down with Vasiliy to chat about Flock.
 publishDate: 2024-11-05
 author: 
   name: Matt Carroll
-  avatarUrl: /images/team/matt-carroll.jpg
+  avatarUrl: /images/team/matt-carroll-192.webp
 ---
 On November 5th, 2024, I sat down with Vasiliy Zukanov to discuss my development history, Flock,
 and Nest.
@@ -14,5 +14,5 @@ Vasiliy works primarily as an Android developer, but has dabbled with Flutter, a
 about a variety of tech topics.
 
 <div style="text-align: center;">
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/Ttm7b2DY19g?si=LFP4VUEzX7o0KaEH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  <iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/Ttm7b2DY19g?si=LFP4VUEzX7o0KaEH" title="Talking Flock with Vasiliy Zukanov" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>

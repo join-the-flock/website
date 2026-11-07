@@ -7,6 +7,7 @@ const path = require('node:path');
 const root = path.resolve(__dirname, '..');
 const build = path.join(root, 'build');
 const output = path.join(root, 'source/images/flock-social-hero.png');
+const sharingOutput = path.join(root, 'source/images/flock-social-hero.jpg');
 const origin = 'http://flock-capture.local';
 
 async function main() {
@@ -74,7 +75,8 @@ async function main() {
     assert.deepEqual(await cardSizes(), before, 'Blank cards must retain their original dimensions');
     assert.deepEqual(errors, [], 'Hero must render without page errors');
     await page.locator('.hero').screenshot({ path: output, type: 'png', scale: 'css' });
-    console.log(`Saved 1200×630 hero sharing image: ${output}`);
+    await page.locator('.hero').screenshot({ path: sharingOutput, type: 'jpeg', quality: 90, scale: 'css' });
+    console.log(`Saved 1200×630 hero master: ${output} and optimized sharing image: ${sharingOutput}`);
   } finally {
     await browser.close();
   }

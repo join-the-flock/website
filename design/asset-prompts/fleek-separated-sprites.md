@@ -4,7 +4,7 @@ The live hero uses complete, independently generated left and leader sprites, pl
 
 The formation uses a 1200 × 600 SVG coordinate system. Live coordinates are recorded in `source/images/flock/fleek-formation.json`. The medium bird is slightly higher and farther left to keep its face clear of the leader's restored wing throughout their bounded drift. The SVG permits overflow so the complete wing and crest remain visible.
 
-Historical polygon cutouts shared parts of the overlapping wings and are unsuitable for independent motion. `tools/split_fleek_formation.py` reproduces those static cutouts for reference only; the live hero uses the completed variants instead.
+Historical polygon cutouts shared parts of the overlapping wings and are unsuitable for independent motion. The live hero uses the completed variants instead; the obsolete extraction script has been removed.
 
 ## Left Fleek repair prompt
 
