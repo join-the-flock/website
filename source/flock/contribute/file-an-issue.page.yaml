@@ -1,5 +1,3 @@
-<!--
 title: File an Issue for Flock
-layout: layouts/redirect.jinja
+layout: redirect
 redirect_url: https://github.com/join-the-flock/nest/issues/new/choose
--->

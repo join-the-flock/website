@@ -1,4 +1,4 @@
-layout: layouts/guide.jinja
+layout: guide
 show_hero: true
 
 side_menu:

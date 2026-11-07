@@ -1,7 +1,7 @@
 ---
 title: About Flock
 description: A community fork of Flutter that stays up to date, adds features, and fixes bugs.
-layout: layouts/page.jinja
+layout: page
 ---
 
 # About Flock

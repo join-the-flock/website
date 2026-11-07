@@ -1,7 +1,5 @@
-<!--
 title: Nest
-layout: layouts/redirect.jinja
+layout: redirect
 redirect_url: /nest/overview/
 canonical_url: https://getflocked.dev/nest/overview/
 redirect_label: Continue to Nest
--->

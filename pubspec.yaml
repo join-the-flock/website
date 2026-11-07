@@ -4,18 +4,24 @@ version: 1.0.0
 publish_to: none
 
 environment:
-  sdk: ^3.0.0
+  sdk: ^3.8.0
 
 dependencies:
-  static_shock: ^0.0.14
-
-#dependency_overrides:
-#  static_shock:
-#    path: /Users/matt/Projects/static_shock/packages/static_shock
+  path: ^1.9.1
+  html: ^0.15.7
+  intl: ^0.19.0
+  jaspr: ^0.23.5
+  markdown: ^7.3.1
+  sass: ^1.66.0
+  yaml: ^3.1.4
 
 dev_dependencies:
   args: ^2.7.0
+  build_runner: ^2.15.1
   image: ^4.12.0
+  jaspr_builder: ^0.23.5
   lints: ^2.0.0
-  path: ^1.9.1
   test: ^1.21.0
+
+jaspr:
+  mode: static

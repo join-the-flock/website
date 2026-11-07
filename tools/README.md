@@ -68,3 +68,12 @@ The capture tool replaces the master; `dart run tools/optimize_images.dart --onl
 re-export its JPEG without recapturing the hero.
 
 Obsolete design helpers are removed rather than maintained alongside these tools.
+
+## Framework migration comparison
+
+`dart run tools/check_migration.dart /path/to/previous-build` compares all prior
+HTML routes by normalized DOM and verifies that scripts, styles and artwork are
+byte-identical. Use it against a preserved distribution when changing rendering
+infrastructure without changing the design. It reads both directories and does
+not modify assets. XML feeds are excluded because their generated metadata and
+serialization may change.

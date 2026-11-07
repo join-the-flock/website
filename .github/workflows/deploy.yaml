@@ -25,10 +25,10 @@ jobs:
           sdk: stable
 
       - name: Install dependencies
-        run: dart pub get
+        run: dart pub get --enforce-lockfile
 
       - name: Analyze build code
-        run: dart analyze bin test tools
+        run: dart analyze bin lib test tools
 
       - name: Run tests
         run: dart test
@@ -36,7 +36,7 @@ jobs:
       - name: Test hero compatibility
         run: node --test test/hero_glow_test.cjs
 
-      - name: Build the static site
+      - name: Pre-render the site with Jaspr
         run: dart run bin/main.dart --refresh-commits
         env:
           GITHUB_TOKEN: ${{ github.token }}

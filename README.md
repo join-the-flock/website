@@ -1,6 +1,22 @@
 # Flock website
 
-Run `dart pub get`, then `dart run bin/main.dart` to build the site.
+The site is statically pre-rendered with Jaspr 0.23.5. `lib/site.dart` supplies
+the Jaspr component tree, navigation, commit cards and Markdown page loading;
+`lib/page_markup.dart` preserves the approved HTML shells and illustrations.
+`bin/main.dart` renders each URL through Jaspr’s server renderer, compiles SCSS,
+copies published assets and generates `/rss_feed.xml`. Dependencies are locked in `pubspec.lock` for reproducible deployment.
+No Dart client runtime
+or SPA router is shipped: existing scripts keep their page-load behavior.
+
+Content stays in `source/**/*.md`. Directory `_data.yaml` files provide layout
+and section-menu defaults. Frontmatter-only `*.page.yaml` files define the home,
+blog index and redirects. Styles and interaction scripts remain in `source/`.
+The static output and deployment artifact remain `build/`. Dart 3.8+ is required.
+
+
+Run `dart pub get`, then `jaspr serve` from the `website/` directory for local
+development. The server reads content, styles, scripts and artwork from source;
+commit data remains cached. Use `dart run bin/main.dart` to build the static site.
 Local builds automatically reuse the last successful commit snapshot. Saving
 files and rebuilding does not request GitHub again. If no snapshot exists, the
 first build fetches it once; the cache remains in use until explicitly refreshed.
@@ -12,7 +28,7 @@ guarantee no GitHub requests. These two options cannot be combined.
 When refreshing, the build fetches the latest 20 commits from
 `join-the-flock/flock-patches` on `main` and `flutter/flutter` on `master` using
 GitHub's commits API.
-It writes `source/data/recent-commits.json`, which Static Shock copies to
+It writes `source/data/recent-commits.json`, which the Jaspr build copies to
 `build/data/recent-commits.json` (served at `/data/recent-commits.json`).
 
 The JSON contains newest-first `flock` and `flutter` arrays, source repositories
@@ -32,18 +48,17 @@ Run `dart run bin/recent_commits.dart` to refresh just the snapshot, or
 `dart test test/recent_commits_test.dart` to run the feed tests.
 
 The homepage renders its approved hero and navigation from
-`source/_includes/components/homeHero.jinja`, with styles in
+`lib/site.dart`, with styles in
 `source/styles/hero.scss` and animation code in `source/scripts/hero/`.
 Initial cards are rendered from the build snapshot, including real authors,
 avatars and commit links. The homepage does not simulate or poll for new commits.
 Its existing arrival animations accept `flock-commit` and `flutter-commit` custom
-events on `.hero` for future updates. Golden Goose and Plume remain disabled
-navigation placeholders until their destinations exist.
+events on `.hero` for future updates.
 
 `design/embracing-hero/` retains the original standalone prototype and simulation
 controls for design experiments.
 
-The homepage product sections live in `homeFeatures.jinja`, with scoped styling
+The homepage product sections live in `lib/page_markup.dart`, with scoped styling
 in `source/styles/features.scss`. The FVM example toggles between valid Flutter
 and Flock configurations through `source/scripts/features.js`; full installation
 instructions remain available at `/flock/get-started`.
@@ -51,7 +66,7 @@ instructions remain available at `/flock/get-started`.
 ## Social sharing image
 
 All pages use `source/images/flock-social-hero.jpg` through the shared
-`socialImage.jinja` component. To refresh it after a hero design change, build
+`socialMarkup()` component. To refresh it after a hero design change, build
 the site, run `node tools/capture_social_image.cjs`, then rebuild to copy the
 new image into the distribution. It saves both a PNG master and the smaller JPEG
 used for sharing. The capture tool requires Playwright and
@@ -99,16 +114,15 @@ Prism's bundle and MIT license are served locally from
 
 Retired Flock contributor URLs remain available as static HTML redirects:
 the issue guide points to the Nest issue form, and the setup/change guides point
-to the Nest repository. Their template is `layouts/redirect.jinja`.
+to the Nest repository. Their template is `redirectMarkup()` in `lib/page_markup.dart`.
 
 ## Nest hero
 
-Nest uses `layouts/nest.jinja` for all section pages, with a desktop sidebar and
+Nest uses `nestMarkup()` in `lib/page_markup.dart` for all section pages, with a desktop sidebar and
 the same sticky mobile navigation and scroll restoration as Flock. The menu is
 configured in `source/nest/_data.yaml`: Overview, Patches, and GitHub Workflows.
-Overview contains the original Nest page text; the other two pages currently
-contain only their section headings. `/nest/` redirects to `/nest/overview/`.
-Mobile section navigation is shared through `sectionNav.jinja` and
+Overview, Patches and GitHub Workflows retain their Markdown content. `/nest/` redirects to `/nest/overview/`.
+Mobile section navigation is shared through the Jaspr menu component and
 `source/scripts/section-navigation.js`.
 
 The high-resolution Nest logo master is retained in
@@ -135,3 +149,15 @@ unavailable, shader compilation fails, or the graphics context is lost.
 
 Run `node --test test/hero_glow_test.cjs` to check fallback selection. Deployment
 runs these checks alongside the Dart tests.
+
+## Migration verification
+
+To compare a preserved older distribution against the current build, run
+`dart run tools/check_migration.dart /path/to/previous-build`. This checks all
+existing HTML routes by normalized DOM and compares stylesheet, script and
+artwork bytes. Run `dart analyze bin lib test tools`, `dart test` and
+`node --test test/hero_glow_test.cjs` for the maintained checks.
+
+Jaspr’s debug renderer may print a missing `.client.dart` warning. This site
+intentionally has no Jaspr client entrypoint; its existing JavaScript modules
+provide all interactive behavior. No client bundle is missing.
